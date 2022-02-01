@@ -31,11 +31,11 @@
                             </div>
                             <div class="form-field form-name">
                                 <label class="contactNameField color-theme" for="contactNameField">Name:<span>(required)</span></label>
-                                <input type="text" name="name" value="" class="contactField round-small requiredField" id="contactNameField" />
+                                <input type="text" name="name" value="{{ !empty($data->name) ? $data->name : '' }}" class="contactField round-small requiredField" id="contactNameField" />
                             </div>
                             <div class="form-field form-text">
                                 <label class="contactMessageTextarea color-theme" for="contactMessageTextarea">Description:</label>
-                                <textarea name="Description" class="contactTextarea round-small requiredField" id="contactMessageTextarea"></textarea>
+                                <textarea name="Description" class="contactTextarea round-small" id="contactMessageTextarea">{{ !empty($data->description) ? $data->description : '' }}</textarea>
                             </div>
                             <div class="form-button">
                                 <input type="submit" class="button bg-highlight button-m button-full round-small bottom-0 shadow-huge contactSubmitButton" value="Save Grade Color" data-formId="contactForm" />
