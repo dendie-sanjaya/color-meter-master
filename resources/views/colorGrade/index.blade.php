@@ -88,10 +88,10 @@
 @section('js')
   <script type="text/javascript">
   	function confirmDelete(p) {
-  	   $('#link-delete').attr("href", '<?php echo url('colorGrade/delete/') ?>/' + p + '?rand=<?php echo rand(100,100000)  ?>');
+  	   $('#link-delete').attr("href", '<?php echo url('colorGrade/delete/') ?>/' + p + '?rand=<?php echo rand(100,100000) ?>');
   	}
 
-  	$("#link-delete").click(function(){ window.location = $('#link-delete').attr("href") });
+  	$("#link-delete").click(function(){ window.location.reload() });
 
     <?php if(!empty(Session::get('msg-success'))): ?>
        setTimeout(function(){$("#toast-success-trigger").click()},1000);
