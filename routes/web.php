@@ -13,7 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'DashboardController@index');
+Route::get('/', 'DashboardController@index')->name('dashboard');
+Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('colorGrade', 'colorGradeController@index')->name('colorGrade');
+Route::get('colorGrade/edit/{id}', 'colorGradeController@edit')->name('colorGrade');
+Route::post('colorGrade/save', 'colorGradeController@save')->name('colorGrade');
+Route::get('colorGrade/delete/{id}', 'colorGradeController@delete')->name('colorGrade');
 
 /*
 Route::group(['middleware' => 'check.auth'], function() {
