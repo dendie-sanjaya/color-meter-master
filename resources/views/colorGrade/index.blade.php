@@ -91,7 +91,7 @@
   	   $('#link-delete').attr("href", '<?php echo url('colorGrade/delete/') ?>/' + p + '?rand=<?php echo rand(100,100000) ?>');
   	}
 
-  	$("#link-delete").click(function(){ window.location.reload() });
+  	$("#link-delete").click(function(){ window.location = '<?php echo url('colorGrade') ?>'+'?rand=<?php echo rand(100,100000) ?>'});
 
     <?php if(!empty(Session::get('msg-success'))): ?>
        setTimeout(function(){$("#toast-success-trigger").click()},1000);
