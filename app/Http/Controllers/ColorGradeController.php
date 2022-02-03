@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\ColorGrade;
-use App\Models\ColorList;
-use App\Models\ColorPattern;
-use App\Models\Config;
+// use App\Models\ColorList;
+// use App\Models\ColorPattern;
+// use App\Models\Config;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -31,12 +31,19 @@ class ColorGradeController extends BaseController
 
 	public function save(Request $request)
 	{	
-	   $data['name'] =  $request->name;
-	   $data['description'] = $request->description;
-	   
-       //ColorGrade::where([['code',$request->id]])->update($data);
-       ColorGrade::create($data);
-       Session::flash('msg-success','Delete sSuccess');
+		$data['name'] =  $request->name;
+	   	$data['description'] = $request->description;
+	   	
+	   //ColorGrade::where('id',$request->id)->update($de);
+	   	if($request->id == 0)
+	   	{
+	   		ColorGrade::create($data);
+	   		Session::flash('msg-success','Create Success');
+	   	}else{
+	   		// $de['is_delete'] =  'yes';
+	   		ColorGrade::where('id',$request->id)->update($data);
+	   		Session::flash('msg-success','Update Success');
+	   	}
        return redirect('colorGrade');
 	}    
 

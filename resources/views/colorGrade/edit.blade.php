@@ -25,20 +25,22 @@
             <div class="content bottom-0">
                 <div class="contact-form">
                     <form action="{{ url('colorGrade/save') }}" method="post" class="contactForm" id="contactForm">
+                        {!! csrf_field() !!}
                         <fieldset>
                             <div class="formValidationError bg-red2-dark" id="contactNameFieldError">
                                 <span class="center-text uppercase color-white ultrabold">Name is required!</span>
                             </div>
                             <div class="form-field form-name">
                                 <label class="contactNameField color-theme" for="contactNameField">Name:<span>(required)</span></label>
-                                <input type="text" name="name" value="{{ !empty($data->name) ? $data->name : '' }}" class="contactField round-small requiredField" id="contactNameField" />
+                                <input type="text" name="name" value="{{ !empty($data->name) ? $data->name : '' }}" class="contactField round-small" id="contactNameField" required/>
+                                <input type="hidden" name="id" value="{{ $data->id }}"  />
                             </div>
                             <div class="form-field form-text">
                                 <label class="contactMessageTextarea color-theme" for="contactMessageTextarea">Description:</label>
-                                <textarea name="Description" class="contactTextarea round-small" id="contactMessageTextarea">{{ !empty($data->description) ? $data->description : '' }}</textarea>
+                                <textarea name="description" class="contactTextarea round-small" id="contactMessageTextarea">{{ !empty($data->description) ? $data->description : '' }}</textarea>
                             </div>
                             <div class="form-button">
-                                <input type="submit" class="button bg-highlight button-m button-full round-small bottom-0 shadow-huge contactSubmitButton" value="Save Grade Color" data-formId="contactForm" />
+                                <input type="submit" class="button bg-highlight button-m button-full round-small bottom-0 shadow-huge" value="Save Grade Color" />
                             </div>
                         </fieldset>
                     </form>			
