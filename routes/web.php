@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'DashboardController@index')->name('dashboard');
 Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 Route::get('colorGrade', 'colorGradeController@index')->name('colorGrade');
+Route::get('colorList', 'ColorListController@index')->name('colorList');
 Route::get('colorGrade/edit/{id}', 'colorGradeController@edit')->name('colorGrade');
+Route::get('colorList/edit/{id}', 'ColorListController@edit')->name('colorList');
 Route::post('colorGrade/save', 'colorGradeController@save')->name('colorGrade');
 Route::get('colorGrade/delete/{id}', 'colorGradeController@delete')->name('colorGrade');
 
