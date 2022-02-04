@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ColorGrade;
 use App\Models\ColorList;
-// use App\Models\ColorPattern;
+use App\Models\ColorPattern;
 // use App\Models\Config;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -19,22 +19,24 @@ class ColorListController extends BaseController
 
 	public function index()
 	{		
-	   $data = ColorList::join('color_grade as b', 'color_list.color_grade_id', '=', 'b.id')->orderBy('b.id', 'asc')->get();	
-
+	   $data = ColorList::leftJoin('color_grade as b', function($qry) { return $qry->on('color_list.color_grade_id', '=', 'b.id')->where([['b.is_delete', 'no'], ['color_list.is_delete', 'no']]); })->orderBy('b.id', 'asc')->get();
+	   // dd($data);
 	   return view('colorList.index',['data' => $data]);
 	}    
 
 	public function edit($id)
 	{	
-	   $data = ColorList::join('color_grade as b', 'color_list.color_grade_id', '=', 'b.id')->where([['color_list.id',$id],['color_list.is_delete','no']])->first();
-	   $grade = ColorGrade::where([['is_delete','no']])->get();		
-	   return view('colorList.edit',['data' => $data, 'grade' => $grade]);
+	   $data = ColorList::join('color_grade as b', 'color_list.color_grade_id', '=', 'b.id')->where([['b.is_delete', 'no'], ['color_list.is_delete', 'no']])->orderBy('b.id', 'asc')->first();
+	   $grade = ColorGrade::select('id','name')->where([['is_delete','no']])->orderBy('id', 'asc')->get();
+	   $pattern = ColorPattern::select('id','name')->orderBy('name', 'asc')->where([['is_delete','no']])->get();		
+	   
+	   return view('colorList.edit',['data' => $data, 'grade' => $grade, 'pattern' =>$pattern]);
 	}    
 
 	public function save(Request $request)
 	{	
-		$data['name'] =  $request->name;
-	   	$data['description'] = $request->description;
+		$data['title'] =  $request->title;
+	   	$data['rgb'] = $request->rgb;
 	   	if($request->id == 0)
 	   	{
 	   		ColorList::create($data);
@@ -44,7 +46,7 @@ class ColorListController extends BaseController
 	   		ColorList::where('id',$request->id)->update($data);
 	   		Session::flash('msg-success','Update Success');
 	   	}
-       return redirect('colorGrade');
+       return redirect('colorList');
 	}    
 
 	public function delete($id)
@@ -55,6 +57,6 @@ class ColorListController extends BaseController
 	       Session::put('msg-success','Delete Success');	   	
 	   }		
 
-       return redirect('colorGrade');
+       return redirect('colorList');
 	}    
 }
