@@ -36,19 +36,19 @@
                             </div>
                             <div class="input-style input-style-2 input-required margin-top-1">
                                 <label class="contactNameField color-theme" for="contactNameField">Grade List:</label>
-                                <select name="color_grade_id" id="color_grade_id" class="contactField round-small">
-                                    <option value="">== Select Grade ==</option>
-                                    @foreach ($grade as $id => $name)
-                                        <option value="{{ $data->color_grade_id }}">{{ $name }}</option>
+                                <select name="color_grade_id" id="color_grade_id" class="contactField round-small" >
+                                    <option value="" style="background-color: #1f1f1f;">== Select Grade ==</option>
+                                    @foreach ($grade as $val)
+                                        <option value="{{ $val->id }}" style="background-color: #1f1f1f;">{{ $val->name }}</option>
                                     @endforeach
                                 </select>
                             </div>                            
                             <div class="input-style input-style-2 input-required margin-top-1">
                                 <label class="contactNameField color-theme" for="contactNameField">Pattern List:</label>
                                 <select name="color_pattern_id" id="color_pattern_id" class="contactField round-small">
-                                    <option value="">== Select Pattern ==</option>
-                                    @foreach ($pattern as $id => $name)
-                                        <option value="{{ $data->color_pattern_id }}">{{ $name }}</option>
+                                    <option value="" style="background-color: #1f1f1f;">== Select Pattern ==</option>
+                                    @foreach ($pattern as $val)
+                                        <option value="{{ $val->id }}"  style="background-color: #1f1f1f;">{{ $val->name }}</option>
                                     @endforeach
                                 </select>
                             </div> 
