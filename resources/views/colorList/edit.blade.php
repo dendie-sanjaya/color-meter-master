@@ -23,7 +23,7 @@
         <div class="content-boxed">
             <div class="content bottom-0">
                 <div class="contact-form">
-                    <form action="{{ url('colorGrade/save') }}" method="post" class="contactForm" id="contactForm">
+                    <form action="{{ url('colorList/save') }}" method="post" class="contactForm" id="contactForm">
                         {!! csrf_field() !!}
                         <fieldset>
                             <div class="formValidationError bg-red2-dark" id="contactNameFieldError">
@@ -39,16 +39,16 @@
                                 <select name="color_grade_id" id="color_grade_id" class="contactField round-small">
                                     <option value="">== Select Grade ==</option>
                                     @foreach ($grade as $id => $name)
-                                        <option value="{{ $id }}">{{ $name }}</option>
+                                        <option value="{{ $data->color_grade_id }}">{{ $name }}</option>
                                     @endforeach
                                 </select>
                             </div>                            
                             <div class="input-style input-style-2 input-required margin-top-1">
                                 <label class="contactNameField color-theme" for="contactNameField">Pattern List:</label>
-                                <select name="color_grade_id" id="color_grade_id" class="contactField round-small">
+                                <select name="color_pattern_id" id="color_pattern_id" class="contactField round-small">
                                     <option value="">== Select Pattern ==</option>
                                     @foreach ($pattern as $id => $name)
-                                        <option value="{{ $id }}">{{ $name }}</option>
+                                        <option value="{{ $data->color_pattern_id }}">{{ $name }}</option>
                                     @endforeach
                                 </select>
                             </div> 
@@ -61,7 +61,7 @@
                                 <input type="text" name="hexadecimal" value="{{ !empty($data->hexadecimal) ? $data->hexadecimal : '' }}" class="contactField round-small" id="hexadecimal" />
                             </div>
                             <div class="form-button">
-                                <input type="submit" class="button bg-highlight button-m button-full round-small bottom-0 shadow-huge" value="Save Grade Color" />
+                                <input type="submit" class="button bg-highlight button-m button-full round-small bottom-0 shadow-huge" value="Save List Color" />
                             </div>
                         </fieldset>
                     </form>			

@@ -23,8 +23,10 @@ Route::get('colorList/edit/{id}', 'ColorListController@edit')->name('colorList')
 Route::get('colorPattern/edit/{id}', 'ColorPatternController@edit')->name('colorPattern');
 Route::post('colorGrade/save', 'colorGradeController@save')->name('colorGrade');
 Route::post('colorPattern/save', 'ColorPatternController@save')->name('colorPattern');
+Route::post('colorList/save', 'ColorListController@save')->name('colorList');
 Route::get('colorGrade/delete/{id}', 'colorGradeController@delete')->name('colorGrade');
 Route::get('colorPattern/delete/{id}', 'ColorPatternController@delete')->name('colorPattern');
+Route::get('colorList/delete/{id}', 'ColorListController@delete')->name('colorList');
 
 /*
 Route::group(['middleware' => 'check.auth'], function() {
