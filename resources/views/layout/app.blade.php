@@ -28,12 +28,12 @@
     </div>
 
     <div id="footer-menu" class="footer-menu-5-icons footer-menu-style-1">
-        <a href="{{ url('dashboard?rand=').rand(1000000,9000000) }}" class="<?php echo Route::currentRouteName() == 'dashboard' ? 'active-nav' : '' ?>"><i class="fa fa-search"></i><span>Scan Color</span></a>
-        <a href="{{ url('colorGrade?rand=').rand(1000000,9000000) }}" class="<?php echo Route::currentRouteName() == 'colorGrade' ? 'active-nav' : '' ?>"><i class="fa fa-layer-group"></i><span>Grade Color</span></a>
+        <a href="{{ url('dashboard')}}" class="<?php echo Route::currentRouteName() == 'dashboard' ? 'active-nav' : '' ?>"><i class="fa fa-search"></i><span>Scan Color</span></a>
+        <a href="{{ url('colorGrade')}}" class="<?php echo Route::currentRouteName() == 'colorGrade' ? 'active-nav' : '' ?>"><i class="fa fa-layer-group"></i><span>Grade Color</span></a>
 
-        <a href="{{ url('colorList?rand=').rand(1000000,9000000)  }}" class="<?php echo Route::currentRouteName() == 'colorList' ? 'active-nav' : '' ?>"><i class="fa fa-list"></i><span>List Color</span></a>
-        <a href="{{ url('colorPattern?rand=').rand(1000000,9000000) }}" class="<?php echo Route::currentRouteName() == 'colorPattern' ? 'active-nav' : '' ?>"><i class="fa fa-palette"></i><span>Pattern Color</span></a>
-        <a href="{{ url('config?rand=').rand(1000000,9000000) }}" class="<?php echo Route::currentRouteName() == 'config' ? 'active-nav' : '' ?>"><i class="fa fa-wrench"></i><span>Tolerance</span></a>
+        <a href="{{ url('colorList')}}" class="<?php echo Route::currentRouteName() == 'colorList' ? 'active-nav' : '' ?>"><i class="fa fa-list"></i><span>List Color</span></a>
+        <a href="{{ url('colorPattern')}}" class="<?php echo Route::currentRouteName() == 'colorPattern' ? 'active-nav' : '' ?>"><i class="fa fa-palette"></i><span>Pattern Color</span></a>
+        <a href="{{ url('config')}}" class="<?php echo Route::currentRouteName() == 'config' ? 'active-nav' : '' ?>"><i class="fa fa-wrench"></i><span>Tolerance</span></a>
         <div class="clear"></div>
     </div>
 
