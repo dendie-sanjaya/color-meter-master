@@ -19,8 +19,8 @@ class ColorListController extends BaseController
 
 	public function index()
 	{		
-	   $data = ColorList::leftJoin('color_grade as b', function($qry) { return $qry->on('color_list.color_grade_id', '=', 'b.id')->where([['b.is_delete', 'no'], ['color_list.is_delete', 'no']]); })->orderBy('b.id', 'asc')->get();
-	   // dd($data);
+	   $data = ColorList::select('color_list.*')->where([['color_list.is_delete', 'no']])->orderBy('color_list.id', 'asc')->get();
+	   
 	   return view('colorList.index',['data' => $data]);
 	}    
 
