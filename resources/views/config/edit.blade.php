@@ -29,7 +29,8 @@
                         <fieldset>
                             <div class="link-list link-list-1">
                                 <a href="#" data-menu="menu-forgot">
-                                    <i class="fa fa-question-circle color-magenta2-dark"></i>
+                                    <!-- <i class="fa fa-question-circle color-magenta2-dark"></i> -->
+                                    <i class="fas fa-key color-magenta2-dark"></i>
                                     <span>Config Reset</span>
                                     <i class="fa fa-angle-right"></i>
                                 </a>
@@ -42,7 +43,8 @@
                                     Let's get you back into your config. Enter your Config Apps.
                                 </p>
                                 <div class="input-style has-icon input-style-1 input-required bottom-30">
-                                    <i class="input-icon fa fa-at"></i>
+                                    <!-- <i class="input-icon fa fa-at"></i> -->
+                                    <i class="input-icon fab fa-expeditedssl "></i>
                                     <span>Config</span>
                                     <em>(required)</em>
                                     <input type="text"  name="val" value="{{ !empty($data->val) ? $data->val : '' }}" placeholder="Config">
