@@ -39,7 +39,8 @@
                                 <select name="color_grade_id" id="color_grade_id" class="contactField round-small" >
                                     <option value="" style="background-color: #1f1f1f;">== Select Grade ==</option>
                                     @foreach ($grade as $val)
-                                        <option value="{{ $val->id }}" style="background-color: #1f1f1f;">{{ $val->name }}</option>
+                                        @php $slct = $val->id == $data->color_grade_id ? ' selected' : ''; @endphp
+                                        <option value="{{ $val->id }}" {{$slct}} style="background-color: #1f1f1f;">{{ $val->name }}</option>
                                     @endforeach
                                 </select>
                             </div>                            
@@ -48,7 +49,8 @@
                                 <select name="color_pattern_id" id="color_pattern_id" class="contactField round-small">
                                     <option value="" style="background-color: #1f1f1f;">== Select Pattern ==</option>
                                     @foreach ($pattern as $val)
-                                        <option value="{{ $val->id }}"  style="background-color: #1f1f1f;">{{ $val->name }}</option>
+                                         @php $slct = $val->id == $data->color_pattern_id ? ' selected' : ''; @endphp
+                                        <option value="{{ $val->id }}" {{$slct}}  style="background-color: #1f1f1f;">{{ $val->name }}</option>
                                     @endforeach
                                 </select>
                             </div> 
