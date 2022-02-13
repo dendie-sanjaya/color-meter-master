@@ -9,7 +9,6 @@
     <div class="page-content header-clear-small">        
         <div data-height="130" class="caption caption-margins round-medium shadow-huge">
             <div class="caption-center right-15 top-15 text-right">
-                <a href="{{ url('dashboard') }}" class="back-button button button-xs button-round-huge bg-highlight">Back Home</a>
             </div>
             <div class="caption-center left-15 text-left">
                 <h1 class="color-white bolder">Tolerance Color</h1>
