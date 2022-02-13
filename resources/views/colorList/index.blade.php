@@ -20,24 +20,42 @@
             <div class="caption-overlay bg-black opacity-70"></div>
             <div class="caption-bg bg-8"></div>
         </div>  
+
+        <div class="content bottom-0">
+            <div class="one-half">
+                <div class="input-style input-style-2 input-required margin-top-1">
+                    <select name="color_grade_id" id="color_grade_id"class="contactField"  >
+                        <?php foreach ($dataColorGrade as $val): ?>
+                            <option value="{{ $val->id }}" style="background-color: #1f1f1f;">{{ $val->name }}</option>
+                        <?php endforeach; ?>
+                    </select>                
+                </div>
+            </div>
+            <div class="one-half last-column">
+                <div class="input-style input-style-2 input-required margin-top-1">
+                    <select name="color_patern_id" id="color_patern_id" class="contactField"  >
+                        <?php foreach ($dataColorPattern as $val): ?>
+                            <option value="{{ $val->id }}" style="background-color: #1f1f1f;">{{ $val->name }}</option>
+                        <?php endforeach; ?>
+                    </select>                    
+               </div>                 
+            </div>
+            <div class="clear"></div>    
+        </div>
+
         <?php if(count($data) > 0): ?>            
-	        <div class="content-boxed">
+	        <div class="content-boxed top-0">
 	            <div class="content accordion-style-2">
 	            	<?php $i = 0 ?>
 	        		<?php foreach($data as $val): ?>
 		                <a data-accordion="accordion-content-<?php echo $i ?>" href="#" class="accordion-toggle-first">
 		                    <i class="accordion-icon-left fa fa-layer-group color-red1-light"></i>
-		                    <?php echo $val->title ?>
+		                    Hexadecimal <?php echo $val->hexadecimal ?>, RGB <?php echo $val->rgb ?>
 		                    <i class="accordion-icon-right fa fa-plus"></i>
 	                    </a>
 		
 		                </a>
 		                <p id="accordion-content-<?php echo $i ?>" class="accordion-content bottom-10">
-		                	<?php if(strlen($val->rgb) > 0): ?>
-		                       <?php echo $val->rgb ?> &nbsp;<br />
-		                    <?php else: ?>
-	                           Nothing RGB &nbsp;<br />
-		                    <?php endif; ?>   
 	                        <span class="text-right">
 		                       <a href="{{ url('colorList/edit/'.$val->id) }}" data-menu="menu-confirm"><i class="fa fa-edit color-white2-dark"></i></a> 
 		                       <a href="#" onclick="confirmDelete('{{ $val->id }}')" data="{{ $val->id }}" data-menu="menu-confirm"><i class="fa fa-trash color-white2-dark"></i></a> 

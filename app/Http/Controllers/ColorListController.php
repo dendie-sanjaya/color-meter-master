@@ -19,9 +19,11 @@ class ColorListController extends BaseController
 
 	public function index()
 	{		
+	   $dataColorGrade = ColorGrade::orderBy('name', 'asc')->where([['is_delete','no']])->get();
+	   $dataColorPattern = ColorPattern::orderBy('name', 'asc')->where([['is_delete','no']])->get();		
 	   $data = ColorList::select('color_list.*')->where([['color_list.is_delete', 'no']])->orderBy('color_list.id', 'asc')->get();
 	   
-	   return view('colorList.index',['data' => $data]);
+	   return view('colorList.index',['data' => $data, 'dataColorGrade' => $dataColorGrade, 'dataColorPattern' => $dataColorPattern]);
 	}    
 
 	public function edit($id)

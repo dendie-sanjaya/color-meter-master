@@ -26,14 +26,9 @@ class ConfigController extends BaseController
 	public function save(Request $request)
 	{	
 		$data['val'] =  $request->val;
-	   	if($request->id == 0)
-	   	{
-	   		Config::create($data);
-	   		Session::flash('msg-success','Create Success');
-	   	}else{
-	   		Config::where('id',$request->id)->update($data);
-	   		Session::flash('msg-success','Update Success');
-	   	}
-       return redirect('config');
+   		Config::where('id',1)->update($data);   		
+   		Session::flash('msg-success','Update Success');
+
+        return redirect('config');
 	}     
 }

@@ -37,7 +37,9 @@
         <div class="clear"></div>
     </div>
 
-    @yield('content')
+    <div class="page-content header-clear-medium">
+        @yield('content')
+    </div>    
 </div>
 
 <script type="text/javascript" src="{{ url('scripts/jquery.js') }}"></script>

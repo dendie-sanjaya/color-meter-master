@@ -22,15 +22,19 @@
         </div>  
         <?php if(count($data) > 0): ?>            
 	        <div class="content-boxed">
-	            <div class="content accordion-style-2">
+	            <div class="content accordion-style-2" >
 	            	<?php $i = 0 ?>
 	        		<?php foreach($data as $val): ?>
 		                <a data-accordion="accordion-content-<?php echo $i ?>" href="#" class="accordion-toggle-first">
 		                    <i class="accordion-icon-left fa fa-layer-group color-red1-light"></i>
-		                    <?php echo $val->name ?>
+		                    <?php echo $val->name ?> 
+                        <?php if($val->is_default == 'yes'): ?>
+                          <sup class="bg-blue2-dark" style="text-align: center; padding: 2px; border-radius: 4px; font-size: 7px; ">Default</sup>
+                        <?php endif; ?>  
 		                    <i class="accordion-icon-right fa fa-plus"></i>
 	                    </a>
 		
+
 		                </a>
 		                <p id="accordion-content-<?php echo $i ?>" class="accordion-content bottom-10">
 		                	<?php if(strlen($val->description) > 0): ?>

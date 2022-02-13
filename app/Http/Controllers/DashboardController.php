@@ -18,10 +18,12 @@ class DashboardController extends BaseController
 
 	public function index()
 	{		
-
 	   $data = array();	
 	   $config = Config::where('is_delete','no')->get();
 
-	   return view('dashboard.index',['data' => $data]);
+	   $dataColorGrade = ColorGrade::orderBy('name', 'asc')->where([['is_delete','no']])->get();
+	   $dataColorPattern = ColorPattern::orderBy('name', 'asc')->where([['is_delete','no']])->get();
+
+	   return view('dashboard.index',['data' => $data, 'dataColorGrade' => $dataColorGrade, 'dataColorPattern' => $dataColorPattern]);
 	}    
 }

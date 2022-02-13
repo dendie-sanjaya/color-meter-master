@@ -19,6 +19,7 @@ class ColorGradeController extends BaseController
 
 	public function index()
 	{		
+		
 	   $data = ColorGrade::orderBy('name', 'asc')->where([['is_delete','no']])->get();	
 	   return view('colorGrade.index',['data' => $data]);
 	}    
@@ -52,7 +53,7 @@ class ColorGradeController extends BaseController
 	   if(!empty($id)) {
 	       $data['is_delete'] =  'yes'; 
 	       ColorGrade::where([['id',$id]])->update($data);
-	       Session::put('msg-success','Delete Success');	   	
+	       Session::flash('msg-success','Delete Success');	   	
 	   }		
 
        return redirect('colorGrade');
