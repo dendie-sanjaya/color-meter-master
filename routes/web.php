@@ -15,19 +15,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'DashboardController@index')->name('dashboard');
 Route::get('dashboard', 'DashboardController@index')->name('dashboard');
-Route::get('colorGrade', 'colorGradeController@index')->name('colorGrade');
+Route::get('colorGrade', 'ColorGradeController@index')->name('colorGrade');
 Route::get('colorList', 'ColorListController@index')->name('colorList');
 Route::get('colorPattern', 'ColorPatternController@index')->name('colorPattern');
 Route::get('config', 'ConfigController@index')->name('config');
-Route::get('colorGrade/edit/{id}', 'colorGradeController@edit')->name('colorGrade');
+Route::get('colorGrade/edit/{id}', 'ColorGradeController@edit')->name('colorGrade');
 Route::get('colorList/edit/{id}', 'ColorListController@edit')->name('colorList');
 Route::get('colorPattern/edit/{id}', 'ColorPatternController@edit')->name('colorPattern');
 Route::get('config/edit/{id}', 'ConfigController@edit')->name('config');
-Route::post('colorGrade/save', 'colorGradeController@save')->name('colorGrade');
+Route::post('colorGrade/save', 'ColorGradeController@save')->name('colorGrade');
 Route::post('colorPattern/save', 'ColorPatternController@save')->name('colorPattern');
 Route::post('colorList/save', 'ColorListController@save')->name('colorList');
 Route::post('config/save', 'ConfigController@save')->name('config');
-Route::get('colorGrade/delete/{id}', 'colorGradeController@delete')->name('colorGrade');
+Route::get('colorGrade/delete/{id}', 'ColorGradeController@delete')->name('colorGrade');
 Route::get('colorPattern/delete/{id}', 'ColorPatternController@delete')->name('colorPattern');
 Route::get('colorList/delete/{id}', 'ColorListController@delete')->name('colorList');
 
