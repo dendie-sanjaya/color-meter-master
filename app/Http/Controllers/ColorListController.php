@@ -21,7 +21,7 @@ class ColorListController extends BaseController
 	{		
 	   $dataColorGrade = ColorGrade::orderBy('name', 'asc')->where([['is_delete','no']])->get();
 	   $dataColorPattern = ColorPattern::orderBy('name', 'asc')->where([['is_delete','no']])->get();		
-	   $data = ColorList::select('color_list.*')->where([['color_list.is_delete', 'no']])->orderBy('color_list.id', 'asc')->get();
+	   $data = ColorList::select('color_list.*')->where([['color_list.is_delete', 'no']])->orderBy('color_list.id', 'desc')->get();
 	   
 	   return view('colorList.index',['data' => $data, 'dataColorGrade' => $dataColorGrade, 'dataColorPattern' => $dataColorPattern]);
 	}    
@@ -66,4 +66,25 @@ class ColorListController extends BaseController
 
        return redirect('colorList');
 	}    
+
+	public function saveAjax(Request $request)
+	{	
+		$data['title'] =  $request->title;
+	   	$data['rgb'] = $request->rgb;
+	   	$data['hexadecimal'] = $request->hexadecimal;
+	   	$data['color_pattern_id'] = $request->color_pattern_id;
+	   	$data['color_grade_id'] = $request->color_grade_id;
+
+	   	$where = [ 'hexadecimal' => $request->hexadecimal,
+	   			   'color_pattern_id' => $request->color_pattern_id,
+	   			   'color_grade_id' => $request->color_grade_id,
+	   			 ];  
+
+	   	if(empty(ColorList::where($where)->first())) {
+	   		ColorList::create($data);	   		
+			return response()->json(['success'=>'Save-ColorSuccess','code'=>'200']);	   	
+	   	} else {
+			return response()->json(['success'=>'Color-Alredy','code'=>'201']);	  
+	   	}	   	
+	}   	
 }
