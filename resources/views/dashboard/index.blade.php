@@ -38,7 +38,7 @@
 
         <div class="content-boxed" style="display: none;" id="capture-image" > 
             <div class="content"  style="cursor: pointer;" >
-                 <h4 class="bolder" style="text-align: center;">Please Pick Color</h3>
+                <h4 class="bolder" style="text-align: center;">Please Pick Color</h3>
                 <input type="file" accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
                 <div class="thumbnail">
                   <div class="preview"></div>
@@ -53,6 +53,8 @@
             </div>
 
             <div class="content">
+                <input type="hidden" name="hexadecimal" id="hexadecimal" value="">
+                <input type="hidden" name="rgb" id="rgb" value="">
                 <div class="input-style input-style-2 input-required margin-top-1">
                     <label class="contactNameField color-theme" for="contactNameField" >Grade Color</label>
                     <select name="color_grade_id" id="color_grade_id" class="contactField round-small" >
@@ -64,13 +66,13 @@
 
                 <div class="input-style input-style-2 input-required margin-top-1">
                     <label class="contactNameField color-theme" for="contactNameField">Patern Color</label>
-                    <select name="color_patern_id" id="color_patern_id" class="contactField round-small" >
+                    <select name="color_patern_id" id="color_pattern_id" class="contactField round-small" >
                         <?php foreach ($dataColorPattern as $val): ?>
                             <option value="{{ $val->id }}" style="background-color: #1f1f1f;">{{ $val->name }}</option>
                         <?php endforeach; ?>
                     </select>                
-                </div>    
-                <a href="#" class="button button-xxs shadow-small button-round-small bg-green2-dark round-small;"  style="width: 100%; text-align: center;" >Save Color</a><br>
+                </div>   
+                <a href="#"  class="button button-xxs shadow-small button-round-small bg-green2-dark round-small;" onclick="saveColor()" style="width: 100%; text-align: center;" >Save Color</a><br>
             </div>                  
         </div>  
         <div class="content">
@@ -78,10 +80,77 @@
         </div>          
     </div>
 
+    <a href="#" data-menu="menu-success" id="show-box-succes" style="display: none">Show Box Succes</a>
+    <div id="menu-success" class="menu menu-box-bottom menu-box-detached round-medium" data-menu-height="315" data-menu-effect="menu-over">
+        <h1 class="center-text top-30"><i class="fa fa-3x fa-check-circle color-green1-dark"></i></h1>
+        <h1 class="center-text uppercase ultrabold top-30">Save Color Success</h1>
+        <p class="boxed-text-large">
+             You can continue with your previous actions.
+        </p>
+        <a href="#" class="close-menu button button-center-medium button-s shadow-large button-round-small bg-green1-light">OK</a>
+    </div>       
+
+    <a href="#" data-menu="menu-warning" id="show-box-warning" style="display: none">Show Box Warning</a>
+    <div id="menu-warning" class="menu menu-box-bottom menu-box-detached round-medium" data-menu-height="315" data-menu-effect="menu-over">
+        <h1 class="center-text top-30"><i class="fa fa-3x fa-times color-red2-dark"></i></h1>
+        <h1 class="center-text uppercase ultrabold top-30">Save Color Failed</h1>
+        <p class="boxed-text-large">
+             You can continue with your previous action and try again save color
+        </p>
+        <a href="#" class="close-menu button button-center-medium button-s shadow-large button-round-small bg-red1-light">Go Back</a>
+    </div>   
+
+    <a href="#" data-menu="menu-info" id="show-box-info" style="display: none">Show Box Warning</a>
+    <div id="menu-info" 
+         class="menu menu-box-bottom menu-box-detached round-medium" 
+         data-menu-height="240" 
+         data-menu-effect="menu-over">
+        <div class="boxed-text-huge">
+            <h3 class="center-text uppercase ultrabold top-30">Opps, Color Already Exist</h3>
+            <p>
+                Opps you color pick is Already Exist, please choose another color or another grade or another pattern
+            </p>
+            <a href="#" class="close-menu button button-center-medium button-s shadow-large button-round-small bg-red1-light">Go Back</a>
+        </div>
+    </div>     
 @endsection
 
 @section('js')
 <script type="text/javascript">
+    /*start convert image to base64 */
+    function saveColor() {
+      var hexadecimal = $('#hexadecimal').val();
+      var rgb = $('#rgb').val(); 
+      var color_grade_id = $('#color_grade_id').val();
+      var color_patern_id = $('#color_pattern_id').val();
+      var _token   = $('meta[name="csrf-token"]').attr('content');
+
+      $.ajax({ 
+        url: "<?php echo url('colorList/saveAjax') ?>",
+        type:"POST",
+        data:{
+          hexadecimal:hexadecimal,
+          rgb:rgb,
+          color_grade_id:color_grade_id,
+          color_pattern_id:color_patern_id,
+          _token: _token
+        },
+        success:function(response){
+          console.log(response);
+          if(response.code == 200) {
+            $('#show-box-succes').click();
+          } else {
+            $('#show-box-info').click();            
+          }
+        },
+        error: function(error) {
+          console.log(error);
+            $('#show-box-warning').click();
+        }
+       });
+    }
+    /*end convert image to base64 */
+
     /*start convert image to base64 */
     function handleFileSelect(evt) {
       var f = evt; 
@@ -125,13 +194,15 @@
       useCanvas(canvas,img,function(){
       var p = canvas.getContext('2d')
       .getImageData(x, y, 1, 1).data; 
-      result.innerHTML = '<div class="bg-blue2-dark" style="padding:3px; margin:5px; text-align:center">Hexadecimal: '+rgbToHex(p[0],p[1],p[2])+'&nbsp;&nbsp;'+
+      result.innerHTML = '<div  style="font-weight:bold; padding:3px; margin:5px; text-align:center; border:white 2px solid; background-color: '+rgbToHex(p[0],p[1],p[2])+'">Hexadecimal: '+rgbToHex(p[0],p[1],p[2])+'&nbsp;&nbsp;'+
        'RGB: ('+
         p[0]+','+
         p[1]+','+
         p[2]+')</div>';
       
-      document.body.style.background =rgbToHex(p[0],p[1],p[2]);      
+      document.body.style.background =rgbToHex(p[0],p[1],p[2]);  
+      document.getElementById('hexadecimal').value = rgbToHex(p[0],p[1],p[2]); 
+      document.getElementById('rgb').value = p[0]+','+p[1]+','+p[2];  
       });
     },false);
 

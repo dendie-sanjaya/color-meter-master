@@ -55,12 +55,13 @@
 	                    </a>
 		
 		                </a>
-		                <p id="accordion-content-<?php echo $i ?>" class="accordion-content bottom-10">
+		                <div id="accordion-content-<?php echo $i ?>" class="accordion-content bottom-10">
+                            <div style="width: 100%;  background-color: <?php echo $val->hexadecimal ?>; border: 2px solid white ">&nbsp;</div>
 	                        <span class="text-right">
 		                       <a href="{{ url('colorList/edit/'.$val->id) }}" data-menu="menu-confirm"><i class="fa fa-edit color-white2-dark"></i></a> 
 		                       <a href="#" onclick="confirmDelete('{{ $val->id }}')" data="{{ $val->id }}" data-menu="menu-confirm"><i class="fa fa-trash color-white2-dark"></i></a> 
 	                   	    </span>
-		                </p> 
+		                </div> 
 		            <?php $i++ ?>    
 		            <?php endforeach ?>    
 	            </div> 

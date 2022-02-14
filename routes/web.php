@@ -26,10 +26,12 @@ Route::get('config/edit/{id}', 'ConfigController@edit')->name('config');
 Route::post('colorGrade/save', 'ColorGradeController@save')->name('colorGrade');
 Route::post('colorPattern/save', 'ColorPatternController@save')->name('colorPattern');
 Route::post('colorList/save', 'ColorListController@save')->name('colorList');
+Route::post('colorList/saveAjax', 'ColorListController@saveAjax')->name('colorList'); 
 Route::post('config/save', 'ConfigController@save')->name('config');
 Route::get('colorGrade/delete/{id}', 'ColorGradeController@delete')->name('colorGrade');
 Route::get('colorPattern/delete/{id}', 'ColorPatternController@delete')->name('colorPattern');
 Route::get('colorList/delete/{id}', 'ColorListController@delete')->name('colorList');
+
 
 /*
 Route::group(['middleware' => 'check.auth'], function() {
