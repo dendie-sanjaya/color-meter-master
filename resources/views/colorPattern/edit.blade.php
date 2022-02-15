@@ -35,6 +35,16 @@
                                 <input type="text" name="name" value="{{ !empty($data->name) ? $data->name : '' }}" class="contactField round-small" id="contactNameField" required/>
                                 <input type="hidden" name="id" value="{{ !empty($data->id) ? $data->id : '' }}"  />
                             </div>
+                            <div class="input-style input-style-2 input-required margin-top-1">
+                                <label class="contactNameField color-theme" for="contactNameField">Grade List:</label>
+                                <select name="is_default" id="is_default" class="contactField round-small" >
+                                    <option value="" style="background-color: #1f1f1f;">== Select Grade ==</option>
+                                    @foreach (['No', 'Yes'] as $val)
+                                        @php $slct = $val == (!empty($data->is_default) ? $data->is_default : '' )  ? ' selected' : ''; @endphp
+                                        <option value="{{ $val }}" {{$slct}} style="background-color: #1f1f1f;">{{ $val }}</option>
+                                    @endforeach
+                                </select>
+                            </div> 
                             <div class="form-field form-text">
                                 <label class="contactMessageTextarea color-theme" for="contactMessageTextarea">Description:</label>
                                 <textarea name="description" class="contactTextarea round-small" id="contactMessageTextarea">{{ !empty($data->description) ? $data->description : '' }}</textarea>
