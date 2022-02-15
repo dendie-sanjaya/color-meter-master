@@ -25,20 +25,33 @@ class ColorPatternController extends BaseController
 
 	public function edit($id)
 	{	
-	   $data = ColorPattern::select('id','name','description')->where([['id',$id],['is_delete','no']])->first();
+	   $data = ColorPattern::select('id','name','is_default','description')->where([['id',$id],['is_delete','no']])->first();
 	   return view('colorPattern.edit',['data' => $data]);
 	}    
 
 	public function save(Request $request)
 	{	
 		$data['name'] =  $request->name;
+		$data['is_default'] = $request->is_default;
 	   	$data['description'] = $request->description;
 	   	if($request->id == 0)
 	   	{
-	   		ColorPattern::create($data);
+	   		if($request->is_default == 'Yes')
+	   		{
+	   			ColorPattern::whereNotIn('id',[$request->id])->update('is_default','no');
+		   		ColorPattern::create($data);
+	   		}
+	   		// ColorPattern::create($data);
 	   		Session::flash('msg-success','Create Success');
 	   	}else{
-	   		ColorPattern::where('id',$request->id)->update($data);
+	   			// dd($request);
+	   		if($request->is_default == 'Yes')
+	   		{
+	   		
+	   			ColorPattern::whereNotIn('id',[$request->id])->update(['is_default'=>'no']);
+		   		ColorPattern::where('id',$request->id)->update($data);
+		   		
+	   		}
 	   		Session::flash('msg-success','Update Success');
 	   	}
        return redirect('colorPattern');
