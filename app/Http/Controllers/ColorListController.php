@@ -20,8 +20,8 @@ class ColorListController extends BaseController
 	public function index()
 	{		
 	   $dataColorGrade = ColorGrade::orderBy('name', 'asc')->where([['is_delete','no']])->get();
-	   $dataColorPattern = ColorPattern::orderBy('name', 'asc')->where([['is_delete','no']])->get();		
-	   $data = ColorList::select('color_list.*')->where([['color_list.is_delete', 'no']])->orderBy('color_list.id', 'desc')->get();
+	   $dataColorPattern = ColorPattern::orderBy('name', 'asc')->where([['is_delete','no']])->get();
+	   $data = ColorList::select('color_list.*', 'b.name as name_grade', 'c.name as name_pattern')->join('color_grade as b', 'color_list.color_grade_id', '=', 'b.id')->join('color_pattern as c', 'color_list.color_pattern_id', '=', 'c.id')->where([['color_list.is_delete', 'no'],['b.is_delete', 'no'], ['c.is_delete', 'no']])->orderBy('color_list.id', 'desc')->get();
 	   
 	   return view('colorList.index',['data' => $data, 'dataColorGrade' => $dataColorGrade, 'dataColorPattern' => $dataColorPattern]);
 	}    
