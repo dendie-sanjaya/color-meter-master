@@ -39,7 +39,7 @@
         <div class="content-boxed" style="display: none;" id="capture-image" > 
             <div class="content"  style="cursor: pointer;" >
                 <h4 class="bolder" style="text-align: center;">Please Pick Color</h4>
-                <input type="file" accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: block; color:white">
+                <input type="file" accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none; color:white">
                 <div class="thumbnail">
                   <div class="preview"></div>
                   <img id="output" width="100%"/>
