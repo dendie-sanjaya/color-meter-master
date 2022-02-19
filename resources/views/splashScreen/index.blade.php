@@ -108,7 +108,7 @@
 
     $(document).ready(function(){
         document.cookie = "integria-scan-color=integria-scan-color";  
-        setTimeout(redirect, 3000);
+        setTimeout(redirect, 5000);
 
         //$(".page").fadeIn(5000);
 
