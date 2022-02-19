@@ -27,13 +27,7 @@
 
 
     <div class="header header-fixed header-logo-center">
-        <div id="status">
-            status
-        </div>    
 
-  <button onclick="isOnline()">
-      Click Me
-  </button>
         <a href="{{ url('dashboard') }}" class="header-title">Color Meter Integria</a>
         <a href="#" class="back-button header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
         <a href="#" data-toggle-theme-switch class="header-icon header-icon-4"><i class="fas fa-question"></i></a>
@@ -59,26 +53,6 @@
 <script type="text/javascript" src="{{ url('scripts/custom.js') }}"></script>
 <script type="text/javascript">
 
-window.addEventListener("offline", (event) => {
-  const statusDisplay = document.getElementById("status");
-  alert('OFFline');
-  statusDisplay.textContent = "OFFline";
-});
-
-window.addEventListener("online", (event) => {
-  const statusDisplay = document.getElementById("status");
-  alert('Online');
-  statusDisplay.textContent = "Online";
-});
-
-      function isOnline() {
-  
-            if (navigator.onLine) {
-                document.getElementById("status").innerHTML = "Online";
-            } else {
-                document.getElementById("status").innerHTML = "Offline";
-            }
-        }
 </script>
 
 @yield('js')
