@@ -915,7 +915,7 @@ if (! function_exists('url')) {
             return app(UrlGenerator::class);
         }
 
-        return app(UrlGenerator::class)->to($path, $parameters, $secure);
+        return app(UrlGenerator::class)->to($path, $parameters, $secure).'?uniqid='.uniqid();
     }
 }
 

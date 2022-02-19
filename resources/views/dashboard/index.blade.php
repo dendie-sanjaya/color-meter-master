@@ -259,10 +259,10 @@
         for(var i = 0; i < cookieArr.length; i++) {
             var cookiePair = cookieArr[i].split("=");
             if(user == cookiePair[0].trim()) {
-                return true
+                return true;
             }
         }
-        return false
+        return false;
     }
 
     function checkCookie() {
