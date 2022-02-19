@@ -17,7 +17,7 @@ class DashboardController extends BaseController
 	use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 	public function index()
-	{		
+	{				
 	   $data = array();	
 	   $config = Config::where('is_delete','no')->get();
 
