@@ -31,6 +31,9 @@
             status
         </div>    
 
+  <button onclick="isOnline()">
+      Click Me
+  </button>
         <a href="{{ url('dashboard') }}" class="header-title">Color Meter Integria</a>
         <a href="#" class="back-button header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
         <a href="#" data-toggle-theme-switch class="header-icon header-icon-4"><i class="fas fa-question"></i></a>
@@ -67,6 +70,15 @@ window.addEventListener("online", (event) => {
   alert('Online');
   statusDisplay.textContent = "Online";
 });
+
+      function isOnline() {
+  
+            if (navigator.onLine) {
+                document.getElementById("status").innerHTML = "Online";
+            } else {
+                document.getElementById("status").innerHTML = "Offline";
+            }
+        }
 </script>
 
 @yield('js')
