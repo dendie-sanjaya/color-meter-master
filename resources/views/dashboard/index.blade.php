@@ -171,7 +171,7 @@
 
     /*start load image */
     var loadFile = function(event) {
-        var loading = '<div  style="font-weight:bold; padding:3px; margin:5px; text-align:center; border:white 2px solid; background-color: white">scan...</div>';
+        var loading = '<div  style="font-weight:bold; padding:3px; margin:5px; text-align:center; border:white 2px solid; background-color: white">Process Scaning...</div>';
         document.getElementById('result').innerHTML=loading; 
         document.getElementById('result').style.display = 'block';
         var fileinput = event.target.files[0];
