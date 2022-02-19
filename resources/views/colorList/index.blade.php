@@ -22,25 +22,27 @@
         </div>  
 
         <div class="content bottom-0">
+            <form action="{{ url('colorList') }}" method="get">
             <div class="one-half">
                 <div class="input-style input-style-2 input-required margin-top-1">
-                    <select name="color_grade_id" id="color_grade_id"class="contactField"  >
+                    <select name="color_grade_id" id="color_grade_id"class="contactField" onchange="this.form.submit()" >
                         <?php foreach ($dataColorGrade as $val): ?>
-                            <option value="{{ $val->id }}" style="background-color: #1f1f1f;">{{ $val->name }}</option>
+                            <option value="{{ $val->id }}" {{ $val->id == $color_grade_id ? 'selected' : '' }} style="background-color: #1f1f1f;">{{ $val->name }}</option>
                         <?php endforeach; ?>
                     </select>                
                 </div>
             </div>
             <div class="one-half last-column">
                 <div class="input-style input-style-2 input-required margin-top-1">
-                    <select name="color_patern_id" id="color_patern_id" class="contactField"  >
+                    <select name="color_patern_id" id="color_patern_id" class="contactField" onchange="this.form.submit()" >
                         <?php foreach ($dataColorPattern as $val): ?>
-                            <option value="{{ $val->id }}" style="background-color: #1f1f1f;">{{ $val->name }}</option>
+                            <option value="{{ $val->id }}"  {{ $val->id == $color_patern_id ? 'selected' : '' }} style="background-color: #1f1f1f;">{{ $val->name }}</option>
                         <?php endforeach; ?>
                     </select>                    
                </div>                 
             </div>
             <div class="clear"></div>    
+            </form>
         </div>
 
         <?php if(count($data) > 0): ?>            
@@ -57,8 +59,14 @@
 		                </a>
 		                <div id="accordion-content-<?php echo $i ?>" class="accordion-content bottom-10">
                             <div style="width: 100%;  background-color: <?php echo $val->hexadecimal ?>; border: 2px solid white ">&nbsp;</div>
-                            <a data-accordion="accordion-content-<?php echo $i ?>" href="#" class="accordion-toggle-first">
-                                Grade Color <?php echo $val->name_grade ?>, Pattern Color <?php echo $val->name_pattern ?>
+                            <a data-accordion="accordion-content-<?php echo $i ?>" href="#" class="accordion-toggle-first">                                
+                                <span class="bg-blue2-dark" style="text-align: center; padding: 4px; border-radius: 4px; margin-right: 10px">
+                                 Grade Color <?php echo $val->name_grade ?>
+                                </span>
+                                 
+                                <span class="bg-red2-dark" style="text-align: center; padding: 4px; border-radius: 4px; ">
+                                 Pattern Color <?php echo $val->name_pattern ?>
+                                </span>
                             </a>
 	                        <span class="text-right">
 		                       <a href="{{ url('colorList/edit/'.$val->id) }}" data-menu="menu-confirm"><i class="fa fa-edit color-white2-dark"></i></a> 
