@@ -39,9 +39,9 @@
                                 <label class="contactNameField color-theme" for="contactNameField">Grade List:</label>
                                 <select name="is_default" id="is_default" class="contactField round-small" >
                                     <option value="" style="background-color: #1f1f1f;">== Select Grade ==</option>
-                                    @foreach (['No', 'Yes'] as $val)
+                                    @foreach (['no', 'yes'] as $val)
                                         @php $slct = $val == (!empty($data->is_default) ? $data->is_default : '' )  ? ' selected' : ''; @endphp
-                                        <option value="{{ $val }}" {{$slct}} style="background-color: #1f1f1f;">{{ $val }}</option>
+                                        <option value="{{ $val }}" {{$slct}} style="background-color: #1f1f1f;">{{ ucwords($val) }}</option>
                                     @endforeach
                                 </select>
                             </div> 
