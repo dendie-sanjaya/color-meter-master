@@ -175,6 +175,7 @@
         document.getElementById('result').innerHTML=loading; 
         document.getElementById('result').style.display = 'block';
         var fileinput = event.target.files[0];
+        window.alert(fileinput);
         handleFileSelect(fileinput);
         document.getElementById('capture-image').style.display = 'block';
     };
