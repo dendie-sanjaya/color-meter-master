@@ -40,7 +40,7 @@
 		                    <?php endif; ?>   
 	                        <span class="text-right">
 		                       <a href="{{ url('colorGrade/edit/'.$val->id) }}" data-menu="menu-confirm"><i class="fa fa-edit color-white2-dark"></i></a> 
-		                       <a href="#" onclick="confirmDelete('{{ $val->id }}')" data="{{ $val->id }}" data-menu="menu-confirm"><i class="fa fa-trash color-white2-dark"></i></a> 
+		                       <a href="#" onclick="confirmDelete('{{ url('colorGrade/delete/'.$val->id) }}')" data="{{ $val->id }}" data-menu="menu-confirm"><i class="fa fa-trash color-white2-dark"></i></a> 
 	                   	    </span>
 		                </p> 
 		            <?php $i++ ?>    
@@ -87,12 +87,13 @@
 
 @section('js')
   <script type="text/javascript">
-  	function confirmDelete(p) {
-  	   $('#link-delete').attr("href", '<?php echo url('colorGrade/delete/') ?>/' + p + '?rand=<?php echo rand(100,100000) ?>');
-  	}
+    function confirmDelete(p) {
+       $('#link-delete').attr("href", p);
+    }
 
-  	$("#link-delete").click(function(){ window.location = '<?php echo url('colorGrade') ?>'+'?rand=<?php echo rand(100,100000) ?>'});
+    $("#link-delete").click(function(){ window.location = $('#link-delete').attr("href") });
 
+  
     <?php if(!empty(Session::get('msg-success'))): ?>
        setTimeout(function(){$("#toast-success-trigger").click()},1000);
     <?php endif; ?>        	  	

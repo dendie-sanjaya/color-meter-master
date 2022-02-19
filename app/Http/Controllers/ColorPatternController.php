@@ -37,7 +37,8 @@ class ColorPatternController extends BaseController
 
 	   	if($request->id == 0)
 	   	{
-	   		ColorPattern::create($data);
+	   		$lastInsert = ColorPattern::create($data);
+	   		$request->id = $lastInsert->id;
 	   		Session::flash('msg-success','Create Success');
 	   	}else{
 		   	ColorPattern::where('id',$request->id)->update($data);

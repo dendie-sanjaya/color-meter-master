@@ -9,7 +9,7 @@
     <div class="page-content header-clear-small">        
         <div data-height="130" class="caption caption-margins round-medium shadow-huge">
             <div class="caption-center right-15 top-15 text-right">
-                <a href="{{ url('colorList') }}" class="back-button button button-xs button-round-huge bg-highlight">Back Home</a>
+                <a href="javascript:window.location = '{{ url('colorList') }}'" class="back-button button button-xs button-round-huge bg-highlight">Back Home</a>
             </div>
             <div class="caption-center left-15 text-left">
                 <h1 class="color-white bolder">Grade Color</h1>
@@ -40,7 +40,7 @@
                             -->
                             <div class="form-field form-name">
                                 <label class="contactNameField color-theme" for="contactNameField">Hexadecimal:</label>
-                                <input type="text" name="hexadecimal" value="{{ !empty($data->hexadecimal) ? $data->hexadecimal : '' }}" class="contactField round-small" id="hexadecimal" />
+                                <input type="text" name="hexadecimal" value="{{ !empty($data->hexadecimal) ? $data->hexadecimal : '' }}" class="contactField round-small" id="hexadecimal" required />
                             </div>                            
                             <div class="form-field form-name">
                                 <label class="contactNameField color-theme" for="contactNameField">RGB:</label>
@@ -48,7 +48,7 @@
                             </div>
                             <div class="input-style input-style-2 input-required margin-top-1">
                                 <label class="contactNameField color-theme" for="contactNameField">Grade List:</label>
-                                <select name="color_grade_id" id="color_grade_id" class="contactField round-small" >
+                                <select required name="color_grade_id" id="color_grade_id" class="contactField round-small" >
                                     <option value="" style="background-color: #1f1f1f;">== Select Grade ==</option>
                                     @foreach ($grade as $val)
                                         @php $slct = $val->id == (!empty($data->color_grade_id) ? $data->color_grade_id : '' )  ? ' selected' : ''; @endphp
@@ -58,7 +58,7 @@
                             </div>                            
                             <div class="input-style input-style-2 input-required margin-top-1">
                                 <label class="contactNameField color-theme" for="contactNameField">Pattern List:</label>
-                                <select name="color_pattern_id" id="color_pattern_id" class="contactField round-small">
+                                <select required name="color_pattern_id" id="color_pattern_id" class="contactField round-small">
                                     <option value="" style="background-color: #1f1f1f;">== Select Pattern ==</option>
                                     @foreach ($pattern as $val)
                                          @php $slct = $val->id == (!empty($data->color_pattern_id) ? $data->color_pattern_id : '' ) ? ' selected' : ''; @endphp
