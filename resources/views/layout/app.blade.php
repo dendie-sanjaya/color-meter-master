@@ -5,10 +5,11 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
 <meta name="csrf-token" content="{{ csrf_token() }}" />
-<meta content="no-cache" http-equiv="Pragma"></meta>
-<meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"></meta>
-<meta content="-1" http-equiv="Expires"></meta>
-
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="cache-control" content="max-age=0" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache" />
 
 <title>Color Meter Integria</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
@@ -36,12 +37,12 @@
     </div>
 
     <div id="footer-menu" class="footer-menu-5-icons footer-menu-style-1">
-        <a href="{{ url('dashboard')}}" class="<?php echo Route::currentRouteName() == 'dashboard' ? 'active-nav' : '' ?>"><i class="fa fa-search"></i><span>Scan Color</span></a>
-        <a href="{{ url('colorGrade')}}" class="<?php echo Route::currentRouteName() == 'colorGrade' ? 'active-nav' : '' ?>"><i class="fa fa-layer-group"></i><span>Grade Color</span></a>
+        <a href="javascript:window.location='{{ url('dashboard')}}'" class="<?php echo Route::currentRouteName() == 'dashboard' ? 'active-nav' : '' ?>"><i class="fa fa-search"></i><span>Scan Color</span></a>
+        <a href="javascript:window.location='{{ url('colorGrade')}}'" class="<?php echo Route::currentRouteName() == 'colorGrade' ? 'active-nav' : '' ?>"><i class="fa fa-layer-group"></i><span>Grade Color</span></a>
 
-        <a href="{{ url('colorList')}}" class="<?php echo Route::currentRouteName() == 'colorList' ? 'active-nav' : '' ?>"><i class="fa fa-list"></i><span>List Color</span></a>
-        <a href="{{ url('colorPattern')}}" class="<?php echo Route::currentRouteName() == 'colorPattern' ? 'active-nav' : '' ?>"><i class="fa fa-palette"></i><span>Pattern Color</span></a>
-        <a href="{{ url('config')}}" class="<?php echo Route::currentRouteName() == 'config' ? 'active-nav' : '' ?>"><i class="fa fa-wrench"></i><span>Tolerance</span></a>
+        <a href="javascript:window.location='{{ url('colorList')}}'" class="<?php echo Route::currentRouteName() == 'colorList' ? 'active-nav' : '' ?>"><i class="fa fa-list"></i><span>List Color</span></a>
+        <a href="javascript:window.location='{{ url('colorPattern')}}'" class="<?php echo Route::currentRouteName() == 'colorPattern' ? 'active-nav' : '' ?>"><i class="fa fa-palette"></i><span>Pattern Color</span></a>
+        <a href="javascript:window.location='{{ url('config')}}'" class="<?php echo Route::currentRouteName() == 'config' ? 'active-nav' : '' ?>"><i class="fa fa-wrench"></i><span>Tolerance</span></a>
         <div class="clear"></div>
     </div>
 
