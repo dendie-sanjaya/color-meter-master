@@ -9,7 +9,7 @@
     <div class="page-content header-clear-small">        
         <div data-height="130" class="caption caption-margins round-medium shadow-huge">
             <div class="caption-center right-15 top-15 text-right">
-                <a href="{{ url('colorGrade') }}" class="back-button button button-xs button-round-huge bg-highlight">Back Home</a>
+                <a href="javascript:window.location = '{{ url('colorGrade') }}'" class="back-button button button-xs button-round-huge bg-highlight">Back Home</a>
             </div>
             <div class="caption-center left-15 text-left">
                 <h1 class="color-white bolder">Grade Color</h1>
@@ -24,7 +24,7 @@
         <div class="content-boxed">
             <div class="content bottom-0">
                 <div class="contact-form">
-                    <form action="{{ url('colorGrade/save') }}" method="post" class="contactForm" id="contactForm">
+                    <form action="{{ url('colorGrade/save') }}'" method="post" class="contactForm" id="contactForm">
                         {!! csrf_field() !!}
                         <fieldset>
                             <div class="formValidationError bg-red2-dark" id="contactNameFieldError">

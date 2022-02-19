@@ -56,7 +56,7 @@ class ColorListController extends BaseController
 	   		ColorList::where('id',$request->id)->update($data);
 	   		Session::flash('msg-success','Update Success');
 	   	}
-       return redirect('colorList');
+       return redirect('colorList?color_grade_id='.$request->color_grade_id.'&color_patern_id='.$request->color_pattern_id);
 	}    
 
 	public function delete($id)
