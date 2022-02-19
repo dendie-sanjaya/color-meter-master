@@ -28,9 +28,10 @@ Route::post('colorPattern/save', 'ColorPatternController@save')->name('colorPatt
 Route::post('colorList/save', 'ColorListController@save')->name('colorList');
 Route::post('colorList/saveAjax', 'ColorListController@saveAjax')->name('colorList'); 
 Route::post('config/save', 'ConfigController@save')->name('config');
-Route::get('colorGrade/delete/{id}', 'colorGradeController@delete')->name('colorGrade');
+Route::get('colorGrade/delete/{id}', 'ColorGradeController@delete')->name('colorGrade');
 Route::get('colorPattern/delete/{id}', 'ColorPatternController@delete')->name('colorPattern');
 Route::get('colorList/delete/{id}', 'ColorListController@delete')->name('colorList');
+Route::get('splashScreen', 'SplashScreenController@index')->name('splashScreen');
 
 
 /*

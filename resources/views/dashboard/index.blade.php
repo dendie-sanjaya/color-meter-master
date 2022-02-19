@@ -252,6 +252,27 @@
       return undefined;
     }    
     /*end get hex dan rgb from foto */
+
+    //document.cookie = "integria-scan-color=integria-scan-color"; 
+     function getCookie(user) {
+        var cookieArr = document.cookie.split(";");
+        for(var i = 0; i < cookieArr.length; i++) {
+            var cookiePair = cookieArr[i].split("=");
+            if(user == cookiePair[0].trim()) {
+                return true
+            }
+        }
+        return false
+    }
+
+    function checkCookie() {
+      var user = getCookie("integria-scan-color");
+      if (!user) {
+         window.location = '<?php echo url('splashScreen') ?>'
+      }
+    }
+
+    checkCookie();
 </script>
 @endsection
 
