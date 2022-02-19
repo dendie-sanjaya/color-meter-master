@@ -17,19 +17,23 @@ class ColorListController extends BaseController
 {
 	use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-	public function index()
+	public function index(Request $request)
 	{		
+
 	   $dataColorGrade = ColorGrade::orderBy('name', 'asc')->where([['is_delete','no']])->get();
-	   $dataColorPattern = ColorPattern::orderBy('name', 'asc')->where([['is_delete','no']])->get();		
-	   $data = ColorList::select('color_list.*')->where([['color_list.is_delete', 'no']])->orderBy('color_list.id', 'desc')->get();
-	   
-	   return view('colorList.index',['data' => $data, 'dataColorGrade' => $dataColorGrade, 'dataColorPattern' => $dataColorPattern]);
+	   $dataColorPattern = ColorPattern::orderBy('name', 'asc')->where([['is_delete','no']])->get();
+
+	   $color_grade_id =  !empty($request->color_grade_id) ? $request->color_grade_id : $dataColorGrade[0]->id;	
+	   $color_patern_id =  !empty($request->color_patern_id) ? $request->color_patern_id : $dataColorPattern[0]->id;
+
+	   $data = ColorList::select('color_list.*', 'b.name as name_grade', 'c.name as name_pattern')->join('color_grade as b', 'color_list.color_grade_id', '=', 'b.id')->join('color_pattern as c', 'color_list.color_pattern_id', '=', 'c.id')->where([['color_list.is_delete', 'no'],['b.is_delete', 'no'], ['c.is_delete', 'no'], ['color_list.color_pattern_id',$color_patern_id], ['color_list.color_grade_id', $color_grade_id] ])->orderBy('color_list.id', 'desc')->get();
+
+	   return view('colorList.index',['data' => $data, 'dataColorGrade' => $dataColorGrade, 'dataColorPattern' => $dataColorPattern,'color_grade_id' => $color_grade_id, 'color_patern_id' => $color_patern_id]);
 	}    
 
 	public function edit($id)
 	{	
-	   $data = ColorList::join('color_grade as b', 'color_list.color_grade_id', '=', 'b.id')->join('color_pattern as c', 'color_list.color_pattern_id', '=', 'c.id')->where([['color_list.id',$id],['b.is_delete', 'no'], ['c.is_delete', 'no'],['color_list.is_delete', 'no']])->orderBy('b.id', 'asc')->first();
-	   
+	   $data = ColorList::where('id',$id)->first();
 	   $grade = ColorGrade::select('id','name')->where([['is_delete','no']])->orderBy('id', 'asc')->get();
 	   $pattern = ColorPattern::select('id','name')->orderBy('name', 'asc')->where([['is_delete','no']])->get();		
 	   
@@ -49,7 +53,6 @@ class ColorListController extends BaseController
 	   		ColorList::create($data);
 	   		Session::flash('msg-success','Create Success');
 	   	}else{
-	   		// $de['is_delete'] =  'yes';
 	   		ColorList::where('id',$request->id)->update($data);
 	   		Session::flash('msg-success','Update Success');
 	   	}

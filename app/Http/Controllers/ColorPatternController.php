@@ -34,26 +34,21 @@ class ColorPatternController extends BaseController
 		$data['name'] =  $request->name;
 		$data['is_default'] = $request->is_default;
 	   	$data['description'] = $request->description;
+
 	   	if($request->id == 0)
 	   	{
-	   		if($request->is_default == 'Yes')
-	   		{
-	   			ColorPattern::whereNotIn('id',[$request->id])->update('is_default','no');
-		   		ColorPattern::create($data);
-	   		}
-	   		// ColorPattern::create($data);
+	   		ColorPattern::create($data);
 	   		Session::flash('msg-success','Create Success');
 	   	}else{
-	   			// dd($request);
-	   		if($request->is_default == 'Yes')
-	   		{
-	   		
-	   			ColorPattern::whereNotIn('id',[$request->id])->update(['is_default'=>'no']);
-		   		ColorPattern::where('id',$request->id)->update($data);
-		   		
-	   		}
+		   	ColorPattern::where('id',$request->id)->update($data);
 	   		Session::flash('msg-success','Update Success');
 	   	}
+
+	   	if($request->is_default == 'yes') {
+	   		ColorPattern::query()->update(['is_default'=>'no']);
+		   	ColorPattern::where('id',$request->id)->update(['is_default'=>'yes']);
+	   }
+
        return redirect('colorPattern');
 	}    
 

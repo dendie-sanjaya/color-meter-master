@@ -66,6 +66,10 @@
 
 
 @section('js')
-
+    <script type="text/javascript">
+        <?php if(!empty(Session::get('msg-success'))): ?>
+           setTimeout(function(){$("#toast-success-trigger").click()},1000);
+        <?php endif; ?>             
+    </script>    
 @endsection
 

@@ -14,7 +14,7 @@
             <div class="caption-center left-15 text-left">
                 <h1 class="color-white bolder">Grade Color</h1>
                 <p class="under-heading color-white opacity-90 bottom-0">
-                    Grade Color Definition
+                    Color List Definition
                 </p>
             </div>
             <div class="caption-overlay bg-black opacity-70"></div>
@@ -77,11 +77,7 @@
     </div>    
 @endsection
 
-
 @section('js')
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.3/js/bootstrap-colorpicker.min.js"></script>
-    <script>
-       $('#rgb').colorpicker();
-    </script>
+
 @endsection
 
