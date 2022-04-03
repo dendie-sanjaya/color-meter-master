@@ -22,7 +22,9 @@
         -->
         
         <div class="cover-wrapper cover-has-buttons">    
+            <!--
             <a href="javascript:window.location='{{ url('dashboard') }}'" class="cover-button button button-round-huge shadow-large button-full bg-green1-dark left-40 right-40 button-m scale-box">GET STARTED HERE</a>
+            -->
             <!--
             <a href="#" class="cover-next color-gray2-dark">Next<i class="fa fa-angle-right left-10"></i></a>
             <a href="#" class="cover-prev color-gray2-dark"><i class="fa fa-angle-left right-10"></i>Previous</a>

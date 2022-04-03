@@ -19,7 +19,7 @@ Route::get('ColorGrade', 'ColorGradeController@index')->name('ColorGrade');
 Route::get('colorList', 'ColorListController@index')->name('colorList');
 Route::get('colorPattern', 'ColorPatternController@index')->name('colorPattern');
 Route::get('config', 'ConfigController@index')->name('config');
-Route::get('ColorGrade/edit/{id}', 'ColorGradeController@edit')->name('ColorGrade');
+Route::get('colorGrade/edit/{id}', 'ColorGradeController@edit')->name('ColorGrade');
 Route::get('colorList/edit/{id}', 'ColorListController@edit')->name('colorList');
 Route::get('colorPattern/edit/{id}', 'ColorPatternController@edit')->name('colorPattern');
 Route::get('config/edit/{id}', 'ConfigController@edit')->name('config');
