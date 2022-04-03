@@ -20,7 +20,7 @@ class ColorGradeController extends BaseController
 	public function index()
 	{		
 		
-	   $data = ColorGrade::orderBy('name', 'asc')->where([['is_delete','no']])->get();	
+	   $data = ColorGrade::orderBy('id', 'asc')->where([['is_delete','no']])->get();	
 	   return view('colorGrade.index',['data' => $data]);
 	}    
 
