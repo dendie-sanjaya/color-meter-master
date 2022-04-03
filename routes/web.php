@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'DashboardController@index')->name('dashboard');
 Route::get('dashboard', 'DashboardController@index')->name('dashboard');
-Route::get('ColorGrade', 'ColorGradeController@index')->name('ColorGrade');
+Route::get('colorGrade', 'ColorGradeController@index')->name('ColorGrade');
 Route::get('colorList', 'ColorListController@index')->name('colorList');
 Route::get('colorPattern', 'ColorPatternController@index')->name('colorPattern');
 Route::get('config', 'ConfigController@index')->name('config');
@@ -23,12 +23,12 @@ Route::get('colorGrade/edit/{id}', 'ColorGradeController@edit')->name('ColorGrad
 Route::get('colorList/edit/{id}', 'ColorListController@edit')->name('colorList');
 Route::get('colorPattern/edit/{id}', 'ColorPatternController@edit')->name('colorPattern');
 Route::get('config/edit/{id}', 'ConfigController@edit')->name('config');
-Route::post('ColorGrade/save', 'ColorGradeController@save')->name('ColorGrade');
+Route::post('colorGrade/save', 'ColorGradeController@save')->name('ColorGrade');
 Route::post('colorPattern/save', 'ColorPatternController@save')->name('colorPattern');
 Route::post('colorList/save', 'ColorListController@save')->name('colorList');
 Route::post('colorList/saveAjax', 'ColorListController@saveAjax')->name('colorList'); 
 Route::post('config/save', 'ConfigController@save')->name('config');
-Route::get('ColorGrade/delete/{id}', 'ColorGradeController@delete')->name('ColorGrade');
+Route::get('colorGrade/delete/{id}', 'ColorGradeController@delete')->name('ColorGrade');
 Route::get('colorPattern/delete/{id}', 'ColorPatternController@delete')->name('colorPattern');
 Route::get('colorList/delete/{id}', 'ColorListController@delete')->name('colorList');
 Route::get('splashScreen', 'SplashScreenController@index')->name('splashScreen');
