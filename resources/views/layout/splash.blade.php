@@ -8,7 +8,7 @@
 	<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
 	<meta HTTP-EQUIV="Expires" CONTENT="-1">
 
-	<title>Color Meter Integria</title>
+	<title>Color Meter Nutricell</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="{{ url('styles/style.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ url('styles/framework.css') }}">

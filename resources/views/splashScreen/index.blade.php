@@ -15,11 +15,12 @@
         
     <div class="page-content">  
         
-        <!--
         <div class="caption-top">
-            <a href="#" data-toggle-theme class="button button-xxs button-round-huge shadow-huge button-center-small bg-green1-dark top-20"><i class="fa fa-lightbulb right-15"></i>Dark Mode</a>
+            <!--
+            <a href="#" data-toggle-theme class="button button-xxs button-round-huge shadow-huge button-center-small bg-green1-dark top-100"><i class="fa fa-lightbulb right-15"></i>Dark Mode</a>
+            -->
+            <img class="button button-xxs button-round-huge  button-center-small bg-white top-80" src="{{ url('images/logo.png') }}" />            
         </div>   
-        -->
         
         <div class="cover-wrapper cover-has-buttons">    
             <!--
@@ -70,10 +71,10 @@
                     </div>
 
                     <div class="caption-bottom bottom-100">
-                        <h1 class="center-text bolder font-33 bottom-0">Integria Scan Color</h1>
+                        <h1 class="center-text bolder font-33 bottom-0">Nutricell Scan Color</h1>
                         <h6 class="center-text thiner font-15 bottom-20 color-highlight">Scan Your Color</h6>
                         <p class="color-theme boxed-text-huge opacity-80 bottom-50">
-                            Integria Scan Color allows you to easily scan color and organize to your color collection
+                            Nutricell Scan Color allows you to easily scan color and organize to your color collection
                         </p>
                     </div>
                 </div>            
