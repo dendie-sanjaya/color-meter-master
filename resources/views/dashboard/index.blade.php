@@ -31,7 +31,7 @@
             <div class="content">
                 <h3 class="bolder">Color Meter Nutricell</h3>
                 <p style="text-align: justify;">
-                    welcome to color meter integria, an application for detecting captured colors which are then converted to hexadecimal or rgb, You can capture picture from your foto galery or camera
+                    welcome to color meter Nutricell, an application for detecting captured colors which are then converted to hexadecimal or rgb, You can capture picture from your foto galery or camera
                 </p>
             </div>            
         </div>
