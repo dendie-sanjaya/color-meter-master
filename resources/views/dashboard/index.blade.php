@@ -16,7 +16,7 @@
 
 @section('content')
     <div class="page-content header-clear-small">        
-        <div data-height="130" class="caption caption-margins round-medium shadow-huge">
+        <div id="header-1" data-height="130" class="caption caption-margins round-medium shadow-huge" >
             <div class="caption-center left-15 text-left">
                 <h1 class="color-white bolder">Scan Color</h1>
                 <p class="under-heading color-white opacity-90 bottom-0">
@@ -27,13 +27,19 @@
             <div class="caption-bg bg-8"></div>
         </div>  
                     
-        <div class="content-boxed">
+        <div class="content-boxed" id="header-2">
             <div class="content">
                 <h3 class="bolder">Color Meter Nutricell</h3>
                 <p style="text-align: justify;">
                     welcome to color meter Nutricell, an application for detecting captured colors which are then converted to hexadecimal or rgb, You can capture picture from your foto galery or camera
                 </p>
             </div>            
+        </div>
+
+        <div class="content-boxed" id="header-3" style="margin-top: -50px; display: none">  
+            <div class="content" style="text-align: center;">          
+                <h3 class="bolder">Color Meter Nutricell</h3>
+            </div>  
         </div>
 
         <div class="content-boxed" style="display: none;" id="capture-image" > 
@@ -65,7 +71,7 @@
                 </div>    
 
                 <div class="input-style input-style-2 input-required margin-top-1">
-                    <label class="contactNameField color-theme" for="contactNameField">Patern Color</label>
+                    <label class="contactNameField color-theme" for="contactNameField">Color Set</label>
                     <select name="color_patern_id" id="color_pattern_id" class="contactField round-small" >
                         <?php foreach ($dataColorPattern as $val): ?>
                             <option value="{{ $val->id }}" style="background-color: #1f1f1f;">{{ $val->name }}</option>
@@ -177,6 +183,7 @@
         var fileinput = event.target.files[0];
         handleFileSelect(fileinput);
         document.getElementById('capture-image').style.display = 'block';
+        hide_header();
     };
     /*end load image */
 
@@ -279,6 +286,12 @@
 
     function rld() {
       window.location.reload();      
+    }
+
+    function hide_header() {
+       document.getElementById('header-1').style.display = 'none';
+       document.getElementById('header-2').style.display = 'none';
+       document.getElementById('header-3').style.display = 'block';
     }
 </script>
 @endsection

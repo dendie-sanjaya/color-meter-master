@@ -12,9 +12,9 @@
                 <a href="javascript:window.location = '{{ url('colorPattern') }}'" class="back-button button button-xs button-round-huge bg-highlight">Back Home</a>
             </div>
             <div class="caption-center left-15 text-left">
-                <h1 class="color-white bolder">Pattern Color</h1>
+                <h1 class="color-white bolder">Color Set</h1>
                 <p class="under-heading color-white opacity-90 bottom-0">
-                    Pattern Color Definition
+                    Color Set Definition
                 </p>
             </div>
             <div class="caption-overlay bg-black opacity-70"></div>
@@ -50,7 +50,7 @@
                                 <textarea name="description" class="contactTextarea round-small" id="contactMessageTextarea">{{ !empty($data->description) ? $data->description : '' }}</textarea>
                             </div>
                             <div class="form-button">
-                                <input type="submit" class="button bg-highlight button-m button-full round-small bottom-0 shadow-huge" value="Save Pattern Color" />
+                                <input type="submit" class="button bg-highlight button-m button-full round-small bottom-0 shadow-huge" value="Save Color Set" />
                             </div>
                         </fieldset>
                     </form>			

@@ -47,7 +47,7 @@
                                 <input type="text" name="rgb" value="{{ !empty($data->rgb) ? $data->rgb : '' }}" class="contactField round-small colorpicker" id="rgb" />
                             </div>
                             <div class="input-style input-style-2 input-required margin-top-1">
-                                <label class="contactNameField color-theme" for="contactNameField">Grade List:</label>
+                                <label class="contactNameField color-theme" for="contactNameField">Grade Color:</label>
                                 <select required name="color_grade_id" id="color_grade_id" class="contactField round-small" >
                                     <option value="" style="background-color: #1f1f1f;">== Select Grade ==</option>
                                     @foreach ($grade as $val)
@@ -57,7 +57,7 @@
                                 </select>
                             </div>                            
                             <div class="input-style input-style-2 input-required margin-top-1">
-                                <label class="contactNameField color-theme" for="contactNameField">Pattern List:</label>
+                                <label class="contactNameField color-theme" for="contactNameField">Set Color:</label>
                                 <select required name="color_pattern_id" id="color_pattern_id" class="contactField round-small">
                                     <option value="" style="background-color: #1f1f1f;">== Select Pattern ==</option>
                                     @foreach ($pattern as $val)

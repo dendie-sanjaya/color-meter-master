@@ -61,11 +61,11 @@
                             <div style="width: 100%;  background-color: <?php echo $val->hexadecimal ?>; border: 2px solid white ">&nbsp;</div>
                             <a data-accordion="accordion-content-<?php echo $i ?>" href="#" class="accordion-toggle-first">                                
                                 <span class="bg-blue2-dark" style="text-align: center; padding: 4px; border-radius: 4px; margin-right: 10px">
-                                 Grade Color <?php echo $val->name_grade ?>
+                                 Grade Color: <?php echo $val->name_grade ?>
                                 </span>
                                  
                                 <span class="bg-red2-dark" style="text-align: center; padding: 4px; border-radius: 4px; ">
-                                 Pattern Color <?php echo $val->name_pattern ?>
+                                 Set Color: <?php echo $val->name_pattern ?>
                                 </span>
                             </a>
 	                        <span class="text-right">

@@ -9,12 +9,12 @@
     <div class="page-content header-clear-small">        
         <div data-height="130" class="caption caption-margins round-medium shadow-huge">
             <div class="caption-center right-15 top-15 text-right">
-                <a href="javascript:window.location='{{ url('colorPattern/edit/0') }}'" class="back-button button button-xs button-round-huge bg-highlight">Add Pattern Color</a>
+                <a href="javascript:window.location='{{ url('colorPattern/edit/0') }}'" class="back-button button button-xs button-round-huge bg-highlight">Add Color Set</a>
             </div>
             <div class="caption-center left-15 text-left">
-                <h1 class="color-white bolder">Pattern Color</h1>
+                <h1 class="color-white bolder">Color Set</h1>
                 <p class="under-heading color-white opacity-90 bottom-0">
-                     Pattern Color Definition
+                    Color Set Definition
                 </p>
             </div>
             <div class="caption-overlay bg-black opacity-70"></div>
@@ -65,7 +65,7 @@
    <div id="menu-confirm" class="menu menu-box-bottom menu-box-detached round-medium" data-menu-height="200" data-menu-effect="menu-over">
         <h1 class="center-text uppercase ultrabold top-20">Are you sure?</h1>
         <p class="boxed-text-large">
-            Are you sure delete pattern color 
+            Are you sure delete Color Set 
         </p>
         <div class="content left-50 right-50">
             <div class="one-half">

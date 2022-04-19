@@ -43,7 +43,7 @@
         <a href="javascript:window.location='{{ url('colorGrade')}}'" class="<?php echo Route::currentRouteName() == 'colorGrade' ? 'active-nav' : '' ?>"><i class="fa fa-layer-group"></i><span>Grade Color</span></a>
 
         <a href="javascript:window.location='{{ url('colorList')}}'" class="<?php echo Route::currentRouteName() == 'colorList' ? 'active-nav' : '' ?>"><i class="fa fa-list"></i><span>List Color</span></a>
-        <a href="javascript:window.location='{{ url('colorPattern')}}'" class="<?php echo Route::currentRouteName() == 'colorPattern' ? 'active-nav' : '' ?>"><i class="fa fa-palette"></i><span>Pattern Color</span></a>
+        <a href="javascript:window.location='{{ url('colorPattern')}}'" class="<?php echo Route::currentRouteName() == 'colorPattern' ? 'active-nav' : '' ?>"><i class="fa fa-palette"></i><span>Color Set</span></a>
         <a href="javascript:window.location='{{ url('config')}}'" class="<?php echo Route::currentRouteName() == 'config' ? 'active-nav' : '' ?>"><i class="fa fa-wrench"></i><span>Tolerance</span></a>
         <div class="clear"></div>
     </div>
