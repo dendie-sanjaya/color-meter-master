@@ -123,6 +123,7 @@
 
 @section('js')
 <script type="text/javascript">
+    var glb_first_capture_image = true;
     /*start convert image to base64 */
     function saveColor() {
       var hexadecimal = $('#hexadecimal').val();
@@ -184,6 +185,7 @@
         handleFileSelect(fileinput);
         document.getElementById('capture-image').style.display = 'block';
         hide_header();
+        glb_first_capture_image = true;                  
     };
     /*end load image */
 
@@ -192,47 +194,40 @@
         canvas = _('#cs'),
         result = _('.result'),
         preview = _('.preview'),x = '',y = '';
-        img.addEventListener('click', function(e){
-          if(e.offsetX) {
-          x = e.offsetX;
-          y = e.offsetY; 
-          }
-          else if(e.layerX) {
-          x = e.layerX;
-          y = e.layerY;
-          }
-      useCanvas(canvas,img,function(){
-      var p = canvas.getContext('2d')
-      .getImageData(x, y, 1, 1).data; 
-      result.innerHTML = '<div  style="font-weight:bold; padding:3px; margin:5px; text-align:center; border:white 2px solid; background-color: '+rgbToHex(p[0],p[1],p[2])+'">Hexadecimal: '+rgbToHex(p[0],p[1],p[2])+'&nbsp;&nbsp;'+
-       'RGB: ('+
-        p[0]+','+
-        p[1]+','+
-        p[2]+')</div>';
-      
-      document.body.style.background =rgbToHex(p[0],p[1],p[2]);  
-      document.getElementById('hexadecimal').value = rgbToHex(p[0],p[1],p[2]); 
-      document.getElementById('rgb').value = p[0]+','+p[1]+','+p[2];  
-      });
-    },false);
 
-    img.addEventListener('mousemove', function(e){
-      if(e.offsetX) {
-      x = e.offsetX;
-      y = e.offsetY; 
-      }
-      else if(e.layerX) {
-      x = e.layerX;
-      y = e.layerY;
-      }
-      
-      useCanvas(canvas,img,function(){
-      
-      var p = canvas.getContext('2d')
-      .getImageData(x, y, 1, 1).data;
-      preview.style.background = rgbToHex(p[0],p[1],p[2]);
-      });
-    },false);
+    img.addEventListener('click', function(e){
+        if(glb_first_capture_image) {
+          var x = Math.ceil($("#output").height()/2);
+          var y = Math.ceil($("#output").width()/2);
+          //alert('width:' + x + 'height:' + y);
+         glb_first_capture_image = false;
+        } else {
+            if(e.offsetX) {
+              x = e.offsetX;
+              y = e.offsetY; 
+            }
+            else if(e.layerX) {
+              x = e.layerX;
+              y = e.layerY;
+            }
+        }
+
+        useCanvas(canvas,img,function(){
+            var p = canvas.getContext('2d')
+            .getImageData(x, y, 1, 1).data; 
+            result.innerHTML = '<div  style="font-weight:bold; padding:3px; margin:5px; text-align:center; border:white 2px solid; background-color: '+rgbToHex(p[0],p[1],p[2])+'">Hexadecimal: '+rgbToHex(p[0],p[1],p[2])+'&nbsp;&nbsp;'+
+             'RGB: ('+
+              p[0]+','+
+              p[1]+','+
+              p[2]+')</div>';
+            
+            document.body.style.background =rgbToHex(p[0],p[1],p[2]);  
+            document.getElementById('hexadecimal').value = rgbToHex(p[0],p[1],p[2]); 
+            document.getElementById('rgb').value = p[0]+','+p[1]+','+p[2];  
+          });
+        },false);
+
+
     function useCanvas(el,image,callback){
       el.width = image.width;
       el.height = image.height; 
@@ -292,6 +287,7 @@
        document.getElementById('header-1').style.display = 'none';
        document.getElementById('header-2').style.display = 'none';
        document.getElementById('header-3').style.display = 'block';
+       setTimeout(function(){$('#output').trigger('click')},1000);
     }
 </script>
 @endsection
