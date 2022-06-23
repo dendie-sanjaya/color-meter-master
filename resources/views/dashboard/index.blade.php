@@ -83,7 +83,7 @@
             </div>                  
         </div>  
         <div class="content">
-            <label for="file" class="button button-xs button-round shadow-huge button-full bg-highlight" style="cursor: pointer;">Capture Image</label>
+            <label for="file" id="btn-capture-img" class="button button-xs button-round shadow-huge button-full bg-highlight" style="cursor: pointer;">Capture Image</label>
         </div>          
     </div>
 
@@ -94,7 +94,7 @@
         <p class="boxed-text-large">
              You can continue with your previous actions.
         </p>
-        <a href="#" class="close-menu button button-center-medium button-s shadow-large button-round-small bg-green1-light">OK</a>
+        <a href="#" onclick="closeSuccess()" class="close-menu button button-center-medium button-s shadow-large button-round-small bg-green1-light">OK</a>
     </div>       
 
     <a href="#" data-menu="menu-warning" id="show-box-warning" style="display: none">Show Box Warning</a>
@@ -127,6 +127,11 @@
 @section('js')
 <script type="text/javascript">
     var glb_first_capture_image = true;
+    function closeSuccess(){
+      document.getElementById('btn-capture-img').style.display = 'block'
+      document.getElementById('capture-image').style.display = 'none';
+      show_header()
+    }
     /*start convert image to base64 */
     function saveColor() {
       var hexadecimal = $('#hexadecimal').val();
@@ -183,6 +188,7 @@
     var loadFile = function(event) {
         var loading = '<div  style="font-weight:bold; padding:3px; margin:5px; text-align:center; border:white 2px solid; background-color: white">Please Click Color</div>';
         document.getElementById('result').innerHTML=loading; 
+        document.getElementById('btn-capture-img').style.display = 'none'
         document.getElementById('result').style.display = 'block';
         var fileinput = event.target.files[0];
         handleFileSelect(fileinput);
@@ -315,6 +321,14 @@
        document.getElementById('header-1').style.display = 'none';
        document.getElementById('header-2').style.display = 'none';
        document.getElementById('header-3').style.display = 'block';
+       //setTimeout(function(){$('#output').trigger('click')},1000);
+       autoClick();  
+
+    }
+    function show_header() {
+       document.getElementById('header-1').style.display = 'block';
+       document.getElementById('header-2').style.display = 'block';
+       document.getElementById('header-3').style.display = 'none';
        //setTimeout(function(){$('#output').trigger('click')},1000);
        autoClick();  
 

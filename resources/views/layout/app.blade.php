@@ -20,7 +20,7 @@
 @yield('css')
 </head>
 
-<body class="theme-dark" data-background="none" data-highlight="red2" onunload="deleteAllCookies()">>
+<body class="theme-light" data-background="none" data-highlight="red2" onunload="deleteAllCookies()">>
         
 <div id="page">
 
