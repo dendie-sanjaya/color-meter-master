@@ -1,12 +1,12 @@
 @extends('layout.app')
 
 @section('css')
-   
+
 @endsection
 
 
 @section('content')
-    <div class="page-content header-clear-small">        
+    <div class="page-content header-clear-small">
         <div data-height="130" class="caption caption-margins round-medium shadow-huge">
             <div class="caption-center right-15 top-15 text-right">
                 <a href="javascript:window.location = '{{ url('colorPattern') }}'" class="back-button button button-xs button-round-huge bg-highlight">Back Home</a>
@@ -14,13 +14,13 @@
             <div class="caption-center left-15 text-left">
                 <h1 class="color-white bolder">Pattern Color</h1>
                 <p class="under-heading color-white opacity-90 bottom-0">
-                    Pattern Color Definition
+                    Color Pattern Definition
                 </p>
             </div>
             <div class="caption-overlay bg-black opacity-70"></div>
             <div class="caption-bg bg-8"></div>
-        </div>  
-                    
+        </div>
+
         <div class="content-boxed">
             <div class="content bottom-0">
                 <div class="contact-form">
@@ -44,7 +44,7 @@
                                         <option value="{{ $val }}" {{$slct}} style="background-color: #1f1f1f;">{{ ucwords($val) }}</option>
                                     @endforeach
                                 </select>
-                            </div> 
+                            </div>
                             <div class="form-field form-text">
                                 <label class="contactMessageTextarea color-theme" for="contactMessageTextarea">Description:</label>
                                 <textarea name="description" class="contactTextarea round-small" id="contactMessageTextarea">{{ !empty($data->description) ? $data->description : '' }}</textarea>
@@ -53,15 +53,15 @@
                                 <input type="submit" class="button bg-highlight button-m button-full round-small bottom-0 shadow-huge" value="Save Pattern Color" />
                             </div>
                         </fieldset>
-                    </form>			
+                    </form>
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
 @endsection
 
 
 @section('js')
-   
+
 @endsection
 

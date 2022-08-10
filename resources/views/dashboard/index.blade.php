@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('css')
-   <style type="text/css">       
+   <style type="text/css">
      #cs{  display:none }
 
     .videobox, #video{
@@ -11,11 +11,11 @@
         width: 100%;
     }
    </style>
-   
+
 @endsection
 
 @section('content')
-    <div class="page-content header-clear-small">        
+    <div class="page-content header-clear-small">
         <div data-height="130" class="caption caption-margins round-medium shadow-huge">
             <div class="caption-center left-15 text-left">
                 <h1 class="color-white bolder">Scan Color</h1>
@@ -25,20 +25,22 @@
             </div>
             <div class="caption-overlay bg-black opacity-70"></div>
             <div class="caption-bg bg-8"></div>
-        </div>  
-                    
-        <div class="content-boxed">
-            <div class="content">
-                <h3 class="bolder">Color Meter Integria</h3>
-                <p style="text-align: justify;">
-                    welcome to color meter integria, an application for detecting captured colors which are then converted to hexadecimal or rgb, You can capture picture from your foto galery or camera
-                </p>
-            </div>            
         </div>
 
-        <div class="content-boxed" style="display: none;" id="capture-image" > 
+        <div class="content-boxed">
+            <div class="content">
+                <h3 class="bolder">Color Meter</h3>
+                <p style="text-align: justify;">
+                    Welcome to Color Meter.<br>
+                    Capture colors and convert to color code.<br>
+                    You can capture color from photo galery or camera.
+                </p>
+            </div>
+        </div>
+
+        <div class="content-boxed" style="display: none;" id="capture-image" >
             <div class="content"  style="cursor: pointer;" >
-                <h4 class="bolder" style="text-align: center;">Please Pick Color</h4>
+                <h4 class="bolder" style="text-align: center;">Please Choose Color</h4>
                 <input type="file" accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none; color:white">
                 <div class="thumbnail">
                   <div class="preview"></div>
@@ -56,63 +58,63 @@
                 <input type="hidden" name="hexadecimal" id="hexadecimal" value="">
                 <input type="hidden" name="rgb" id="rgb" value="">
                 <div class="input-style input-style-2 input-required margin-top-1">
-                    <label class="contactNameField color-theme" for="contactNameField" >Grade Color</label>
+                    <label class="contactNameField color-theme" for="contactNameField" >Color Grade</label>
                     <select name="color_grade_id" id="color_grade_id" class="contactField round-small" >
                         <?php foreach ($dataColorGrade as $val): ?>
                             <option value="{{ $val->id }}" style="background-color: #1f1f1f;">{{ $val->name }}</option>
                         <?php endforeach; ?>
-                    </select>                
-                </div>    
+                    </select>
+                </div>
 
                 <div class="input-style input-style-2 input-required margin-top-1">
-                    <label class="contactNameField color-theme" for="contactNameField">Patern Color</label>
+                    <label class="contactNameField color-theme" for="contactNameField">Color Pattern</label>
                     <select name="color_patern_id" id="color_pattern_id" class="contactField round-small" >
                         <?php foreach ($dataColorPattern as $val): ?>
                             <option value="{{ $val->id }}" style="background-color: #1f1f1f;">{{ $val->name }}</option>
                         <?php endforeach; ?>
-                    </select>                
-                </div>   
+                    </select>
+                </div>
                 <a href="#"  class="button button-xxs shadow-small button-round-small bg-green2-dark round-small;" onclick="saveColor()" style="width: 100%; text-align: center;" >Save Color</a><br>
-            </div>                  
-        </div>  
+            </div>
+        </div>
         <div class="content">
             <label for="file" class="button button-xs button-round shadow-huge button-full bg-highlight" style="cursor: pointer;">Capture Image</label>
-        </div>          
+        </div>
     </div>
 
-    <a href="#" data-menu="menu-success" id="show-box-succes" style="display: none">Show Box Succes</a>
+    <a href="#" data-menu="menu-success" id="show-box-succes" style="display: none">Show Success</a>
     <div id="menu-success" class="menu menu-box-bottom menu-box-detached round-medium" data-menu-height="315" data-menu-effect="menu-over">
         <h1 class="center-text top-30"><i class="fa fa-3x fa-check-circle color-green1-dark"></i></h1>
-        <h1 class="center-text uppercase ultrabold top-30">Save Color Success</h1>
+        <h1 class="center-text uppercase ultrabold top-30">Save Color Successful</h1>
         <p class="boxed-text-large">
-             You can continue with your previous actions.
+             Continue with your previous actions.
         </p>
         <a href="#" class="close-menu button button-center-medium button-s shadow-large button-round-small bg-green1-light">OK</a>
-    </div>       
+    </div>
 
-    <a href="#" data-menu="menu-warning" id="show-box-warning" style="display: none">Show Box Warning</a>
+    <a href="#" data-menu="menu-warning" id="show-box-warning" style="display: none">Show Warning</a>
     <div id="menu-warning" class="menu menu-box-bottom menu-box-detached round-medium" data-menu-height="315" data-menu-effect="menu-over">
         <h1 class="center-text top-30"><i class="fa fa-3x fa-times color-red2-dark"></i></h1>
         <h1 class="center-text uppercase ultrabold top-30">Save Color Failed</h1>
         <p class="boxed-text-large">
-             You can continue with your previous action and try again save color
+             Continue with your previous action and try again to save color
         </p>
         <a href="#" class="close-menu button button-center-medium button-s shadow-large button-round-small bg-red1-light">Go Back</a>
-    </div>   
+    </div>
 
-    <a href="#" data-menu="menu-info" id="show-box-info" style="display: none">Show Box Warning</a>
-    <div id="menu-info" 
-         class="menu menu-box-bottom menu-box-detached round-medium" 
-         data-menu-height="240" 
+    <a href="#" data-menu="menu-info" id="show-box-info" style="display: none">Show Warning</a>
+    <div id="menu-info"
+         class="menu menu-box-bottom menu-box-detached round-medium"
+         data-menu-height="240"
          data-menu-effect="menu-over">
         <div class="boxed-text-huge">
-            <h3 class="center-text uppercase ultrabold top-30">Opps, Color Already Exist</h3>
+            <h3 class="center-text uppercase ultrabold top-30">Color Already Exist</h3>
             <p>
-                Opps you color pick is Already Exist, please choose another color or another grade or another pattern
+                Color is already exist, please choose another color or another grade or another pattern
             </p>
             <a href="#" class="close-menu button button-center-medium button-s shadow-large button-round-small bg-red1-light">Go Back</a>
         </div>
-    </div>     
+    </div>
 @endsection
 
 @section('js')
@@ -120,12 +122,12 @@
     /*start convert image to base64 */
     function saveColor() {
       var hexadecimal = $('#hexadecimal').val();
-      var rgb = $('#rgb').val(); 
+      var rgb = $('#rgb').val();
       var color_grade_id = $('#color_grade_id').val();
       var color_patern_id = $('#color_pattern_id').val();
       var _token   = $('meta[name="csrf-token"]').attr('content');
 
-      $.ajax({ 
+      $.ajax({
         url: "<?php echo url('colorList/saveAjax') ?>",
         type:"POST",
         data:{
@@ -140,7 +142,7 @@
           if(response.code == 200) {
             $('#show-box-succes').click();
           } else {
-            $('#show-box-info').click();            
+            $('#show-box-info').click();
           }
         },
         error: function(error) {
@@ -153,7 +155,7 @@
 
     /*start convert image to base64 */
     function handleFileSelect(evt) {
-      var f = evt; 
+      var f = evt;
       var reader = new FileReader();
       reader.onload = (function(theFile) {
         return function(e) {
@@ -172,7 +174,7 @@
     /*start load image */
     var loadFile = function(event) {
         var loading = '<div  style="font-weight:bold; padding:3px; margin:5px; text-align:center; border:white 2px solid; background-color: white">Process Scaning...</div>';
-        document.getElementById('result').innerHTML=loading; 
+        document.getElementById('result').innerHTML=loading;
         document.getElementById('result').style.display = 'block';
         var fileinput = event.target.files[0];
         handleFileSelect(fileinput);
@@ -188,7 +190,7 @@
         img.addEventListener('click', function(e){
           if(e.offsetX) {
           x = e.offsetX;
-          y = e.offsetY; 
+          y = e.offsetY;
           }
           else if(e.layerX) {
           x = e.layerX;
@@ -196,31 +198,31 @@
           }
       useCanvas(canvas,img,function(){
       var p = canvas.getContext('2d')
-      .getImageData(x, y, 1, 1).data; 
+      .getImageData(x, y, 1, 1).data;
       result.innerHTML = '<div  style="font-weight:bold; padding:3px; margin:5px; text-align:center; border:white 2px solid; background-color: '+rgbToHex(p[0],p[1],p[2])+'">Hexadecimal: '+rgbToHex(p[0],p[1],p[2])+'&nbsp;&nbsp;'+
        'RGB: ('+
         p[0]+','+
         p[1]+','+
         p[2]+')</div>';
-      
-      document.body.style.background =rgbToHex(p[0],p[1],p[2]);  
-      document.getElementById('hexadecimal').value = rgbToHex(p[0],p[1],p[2]); 
-      document.getElementById('rgb').value = p[0]+','+p[1]+','+p[2];  
+
+      document.body.style.background =rgbToHex(p[0],p[1],p[2]);
+      document.getElementById('hexadecimal').value = rgbToHex(p[0],p[1],p[2]);
+      document.getElementById('rgb').value = p[0]+','+p[1]+','+p[2];
       });
     },false);
 
     img.addEventListener('mousemove', function(e){
       if(e.offsetX) {
       x = e.offsetX;
-      y = e.offsetY; 
+      y = e.offsetY;
       }
       else if(e.layerX) {
       x = e.layerX;
       y = e.layerY;
       }
-      
+
       useCanvas(canvas,img,function(){
-      
+
       var p = canvas.getContext('2d')
       .getImageData(x, y, 1, 1).data;
       preview.style.background = rgbToHex(p[0],p[1],p[2]);
@@ -228,7 +230,7 @@
     },false);
     function useCanvas(el,image,callback){
       el.width = image.width;
-      el.height = image.height; 
+      el.height = image.height;
       el.getContext('2d')
       .drawImage(image, 0, 0, image.width, image.height);
       return callback();
@@ -253,10 +255,10 @@
         return { x: curleft, y: curtop };
       }
       return undefined;
-    }    
+    }
     /*end get hex dan rgb from foto */
 
-    //document.cookie = "integria-scan-color=integria-scan-color"; 
+    //document.cookie = "integria-scan-color=integria-scan-color";
      function getCookie(user) {
         var cookieArr = document.cookie.split(";");
         for(var i = 0; i < cookieArr.length; i++) {
@@ -278,7 +280,7 @@
     checkCookie();
 
     function rld() {
-      window.location.reload();      
+      window.location.reload();
     }
 </script>
 @endsection

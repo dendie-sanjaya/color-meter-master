@@ -11,17 +11,17 @@
 <meta http-equiv="pragma" content="no-cache" />
 <meta http-equiv="cache-control" content="no-cache" />
 
-<title>Color Meter Integria</title>
+<title>Color Meter</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{{ url('styles/style.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url('styles/framework.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ url('fonts/css/fontawesome-all.min.css') }}">  
+<link rel="stylesheet" type="text/css" href="{{ url('fonts/css/fontawesome-all.min.css') }}">
 
 @yield('css')
 </head>
 
 <body class="theme-dark" data-background="none" data-highlight="red2" onunload="deleteAllCookies()">>
-        
+
 <div id="page">
 
     <div id="page-preloader">
@@ -31,7 +31,7 @@
 
     <div class="header header-fixed header-logo-center">
 
-        <a href="{{ url('dashboard') }}" class="header-title">Color Meter Integria</a>
+        <a href="{{ url('dashboard') }}" class="header-title">Color Meter</a>
         <a href="#" class="back-button header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
         <a href="#" data-toggle-theme-switch class="header-icon header-icon-4"><i class="fas fa-question"></i></a>
     </div>
@@ -48,7 +48,7 @@
 
     <div class="page-content header-clear-medium">
         @yield('content')
-    </div>    
+    </div>
 </div>
 
 <script type="text/javascript" src="{{ url('scripts/jquery.js') }}"></script>
